@@ -7,7 +7,7 @@ package com.liumapp.jks.core.job;
  * @homepage http://www.liumapp.com
  * @date 6/28/18
  */
-public class JobData {
+public abstract class JobData {
 
 
 

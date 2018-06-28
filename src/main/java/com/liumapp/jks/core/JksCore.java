@@ -1,6 +1,8 @@
 package com.liumapp.jks.core;
 
 import com.alibaba.fastjson.JSONObject;
+import com.liumapp.jks.core.job.JobData;
+import com.liumapp.jks.core.job.JobDetail;
 
 /**
  * @author liumapp
@@ -11,6 +13,8 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class JksCore {
 
-    public JSONObject doJob()
+    public JSONObject doJob(JobDetail jobDetail, JobData jobData) {
+        return jobDetail.handle(jobData);
+    }
 
 }

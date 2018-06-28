@@ -1,5 +1,7 @@
 package com.liumapp.jks.core.job;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * @author liumapp
  * @file JobDetail.java
@@ -7,8 +9,8 @@ package com.liumapp.jks.core.job;
  * @homepage http://www.liumapp.com
  * @date 6/28/18
  */
-public class JobDetail {
+public abstract class JobDetail<T extends JobData> {
 
-
+    public abstract JSONObject handle(T data);
 
 }
