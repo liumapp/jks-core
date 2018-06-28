@@ -11,6 +11,4 @@ import java.io.Serializable;
  */
 public abstract class JobData implements Serializable {
 
-
-
 }
