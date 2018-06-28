@@ -1,5 +1,7 @@
 package com.liumapp.jks.core.job;
 
+import java.io.Serializable;
+
 /**
  * @author liumapp
  * @file JobData.java
@@ -7,7 +9,7 @@ package com.liumapp.jks.core.job;
  * @homepage http://www.liumapp.com
  * @date 6/28/18
  */
-public abstract class JobData {
+public abstract class JobData implements Serializable {
 
 
 
