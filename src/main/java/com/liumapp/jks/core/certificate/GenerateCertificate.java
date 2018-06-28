@@ -3,6 +3,7 @@ package com.liumapp.jks.core.certificate;
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.jks.core.certificate.require.GenerateCertificateRequire;
 import com.liumapp.jks.core.filter.RequestFilter;
+import com.liumapp.jks.core.loader.Resource;
 
 /**
  * @author liumapp
@@ -15,7 +16,8 @@ public class GenerateCertificate extends RequestFilter<GenerateCertificateRequir
 
     @Override
     public JSONObject handle(GenerateCertificateRequire data) {
-        
+        Resource resource = Resource.from(data.getKeystorePath());
+
         return null;
     }
 
