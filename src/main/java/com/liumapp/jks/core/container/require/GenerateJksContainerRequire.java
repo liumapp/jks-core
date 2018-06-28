@@ -20,7 +20,7 @@ public class GenerateJksContainerRequire extends JobData {
     private Integer keyLength = 2048;
 
     /**
-     * fc: first cert
+     * fc: first certificate
      *
      * 个人证书：个人姓名
      *
