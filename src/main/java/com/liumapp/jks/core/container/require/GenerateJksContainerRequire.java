@@ -11,6 +11,8 @@ import com.liumapp.jks.core.job.JobData;
  */
 public class GenerateJksContainerRequire extends JobData {
 
+    private String savePath;
+
     private String keyStoreName;
 
     private String keyStorePd;
@@ -44,7 +46,8 @@ public class GenerateJksContainerRequire extends JobData {
     public GenerateJksContainerRequire() {
     }
 
-    public GenerateJksContainerRequire(String keyStoreName, String keyStorePd, Integer keyLength, String fcName, String fcProvince, String fcCity, String fcCountry, String fcAlias, String fcPassword) {
+    public GenerateJksContainerRequire(String savePath, String keyStoreName, String keyStorePd, Integer keyLength, String fcName, String fcProvince, String fcCity, String fcCountry, String fcAlias, String fcPassword) {
+        this.savePath = savePath;
         this.keyStoreName = keyStoreName;
         this.keyStorePd = keyStorePd;
         this.keyLength = keyLength;
@@ -54,6 +57,14 @@ public class GenerateJksContainerRequire extends JobData {
         this.fcCountry = fcCountry;
         this.fcAlias = fcAlias;
         this.fcPassword = fcPassword;
+    }
+
+    public String getSavePath() {
+        return savePath;
+    }
+
+    public void setSavePath(String savePath) {
+        this.savePath = savePath;
     }
 
     public String getKeyStoreName() {

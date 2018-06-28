@@ -14,10 +14,10 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class RequestFilter<T extends JobData> extends JobDetail<T> implements FilterStrategy {
 
-    private Logger logger = LoggerFactory.getLogger(RequestFilter.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RequestFilter.class);
 
     @Override
     public void loggerRequest(JobData data) {
-        logger.info("get request with data : " + data.toString());
+        LOGGER.info("get request with data : " + data.toString());
     }
 }
