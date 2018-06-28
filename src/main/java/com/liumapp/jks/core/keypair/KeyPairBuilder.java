@@ -1,6 +1,7 @@
 package com.liumapp.jks.core.keypair;
 
 import com.liumapp.jks.core.adapter.KeyStoreAdapter;
+import com.liumapp.jks.core.certificate.CertificateBuilder;
 
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;

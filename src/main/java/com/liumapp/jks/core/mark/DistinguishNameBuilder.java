@@ -22,7 +22,7 @@ public class DistinguishNameBuilder {
 
     private StringBuilder stringBuilder = new StringBuilder(200);
 
-    DistinguishNameBuilder(CertificateBuilder certificateBuilder) {
+    public DistinguishNameBuilder(CertificateBuilder certificateBuilder) {
         this.certificateBuilder = certificateBuilder;
     }
 

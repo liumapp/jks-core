@@ -1,6 +1,8 @@
 package com.liumapp.jks.core.certificate;
 
 import com.liumapp.jks.core.adapter.KeyStoreAdapter;
+import com.liumapp.jks.core.conditions.Preconditions;
+import com.liumapp.jks.core.mark.DistinguishNameBuilder;
 import sun.security.x509.*;
 
 import java.io.IOException;
@@ -26,7 +28,7 @@ public class CertificateBuilder {
 
     private final X509CertInfo info;
 
-    CertificateBuilder(KeyStoreAdapter keyStoreAdapter, KeyPair keyPair) {
+    public CertificateBuilder(KeyStoreAdapter keyStoreAdapter, KeyPair keyPair) {
         this.keyStoreAdapter = keyStoreAdapter;
         this.keyPair = keyPair;
         this.info = new X509CertInfo();

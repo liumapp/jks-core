@@ -1,5 +1,6 @@
 package com.liumapp.jks.core.adapter;
 
+import com.liumapp.jks.core.certificate.CSR;
 import com.liumapp.jks.core.keypair.KeyPairBuilder;
 import sun.security.pkcs10.PKCS10;
 import sun.security.x509.X500Name;
