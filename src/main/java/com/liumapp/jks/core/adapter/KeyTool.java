@@ -1,5 +1,7 @@
 package com.liumapp.jks.core.adapter;
 
+import com.liumapp.jks.core.loader.Resource;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyStore;
