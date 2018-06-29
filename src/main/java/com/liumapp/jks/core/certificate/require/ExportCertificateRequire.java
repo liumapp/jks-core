@@ -13,6 +13,8 @@ public class ExportCertificateRequire extends JobData {
 
     private String keystorePath;
 
+    private String keystoreName;
+
     private String keystorePasswd;
 
     private String alias;
@@ -24,12 +26,21 @@ public class ExportCertificateRequire extends JobData {
     public ExportCertificateRequire() {
     }
 
-    public ExportCertificateRequire(String keystorePath, String keystorePasswd, String alias, String certSavePath, String certName) {
+    public ExportCertificateRequire(String keystorePath, String keystoreName, String keystorePasswd, String alias, String certSavePath, String certName) {
         this.keystorePath = keystorePath;
+        this.keystoreName = keystoreName;
         this.keystorePasswd = keystorePasswd;
         this.alias = alias;
         this.certSavePath = certSavePath;
         this.certName = certName;
+    }
+
+    public String getKeystoreName() {
+        return keystoreName;
+    }
+
+    public void setKeystoreName(String keystoreName) {
+        this.keystoreName = keystoreName;
     }
 
     public String getCertName() {

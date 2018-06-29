@@ -27,7 +27,7 @@ public class ExportCertificate extends RequestFilter<ExportCertificateRequire> {
     @Override
     public JSONObject handle(ExportCertificateRequire data) {
         try {
-            Resource resource = Resource.from(data.getKeystorePath());
+            Resource resource = Resource.from(data.getKeystorePath() + "/" + data.getKeystoreName());
             KeyStoreAdapter keyStoreAdapter = KeyTool.keyStoreFrom(resource , data.getKeystorePasswd());
             Certificate certificate = keyStoreAdapter.getCertificate(data.getAlias());
             FileOutputStream out = new FileOutputStream(data.getCertSavePath() + "/" + data.getCertName());
