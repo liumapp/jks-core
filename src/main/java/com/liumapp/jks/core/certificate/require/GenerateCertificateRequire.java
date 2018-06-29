@@ -16,6 +16,8 @@ public class GenerateCertificateRequire extends JobData {
      */
     private String keystorePath;
 
+    private String keystoreName;
+
     /**
      * 密钥库密码
      */
@@ -65,8 +67,9 @@ public class GenerateCertificateRequire extends JobData {
     public GenerateCertificateRequire() {
     }
 
-    public GenerateCertificateRequire(String keystorePath, String storepass, String alias, String certPassword, Integer validity, String name, String province, String city, String country) {
+    public GenerateCertificateRequire(String keystorePath, String keystoreName, String storepass, String alias, String certPassword, Integer validity, String name, String province, String city, String country) {
         this.keystorePath = keystorePath;
+        this.keystoreName = keystoreName;
         this.storepass = storepass;
         this.alias = alias;
         this.certPassword = certPassword;
@@ -75,6 +78,14 @@ public class GenerateCertificateRequire extends JobData {
         this.province = province;
         this.city = city;
         this.country = country;
+    }
+
+    public String getKeystoreName() {
+        return keystoreName;
+    }
+
+    public void setKeystoreName(String keystoreName) {
+        this.keystoreName = keystoreName;
     }
 
     public String getKeystorePath() {

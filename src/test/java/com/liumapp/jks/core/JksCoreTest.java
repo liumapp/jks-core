@@ -61,6 +61,13 @@ public class JksCoreTest extends TestCase {
         GenerateCertificateRequire generateCertificateRequire = new GenerateCertificateRequire();
         generateCertificateRequire.setAlias("second-cert");
         generateCertificateRequire.setCertPassword("123123");
+        generateCertificateRequire.setCountry("CN");
+        generateCertificateRequire.setProvince("ZJ");
+        generateCertificateRequire.setCity("Hangzhou");
+        generateCertificateRequire.setKeystorePath(this.jksSavePath);
+        generateCertificateRequire.setStorepass("123456");
+        generateCertificateRequire.setValidity(1);
+        generateCertificateRequire.setName("liumapp2");
         JSONObject result = jksCore.doJob(generateCertificate, generateCertificateRequire);
         Assert.assertEquals("success", result.get("msg"));
     }

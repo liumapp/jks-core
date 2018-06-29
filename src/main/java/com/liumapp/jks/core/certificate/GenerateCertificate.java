@@ -25,7 +25,8 @@ public class GenerateCertificate extends RequestFilter<GenerateCertificateRequir
     @Override
     public JSONObject handle(GenerateCertificateRequire data) {
         try {
-            Resource resource = Resource.from(data.getKeystorePath());
+            String filename = data.getKeystorePath() + "/" + data.getKeystoreName();
+            Resource resource = Resource.from(filename);
             KeyStoreAdapter keyStoreAdapter = KeyTool.keyStoreFrom(resource , data.getStorepass());
             keyStoreAdapter.newKeyPair()
                     .keyLength(data.getKeysize())
