@@ -11,6 +11,8 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.io.File;
+
 /**
  * @author liumapp
  * @file JksCoreTest.java
@@ -21,6 +23,13 @@ import org.junit.Test;
 public class JksCoreTest extends TestCase {
 
     private String jksSavePath = "/usr/local/tomcat/project/jks-core/";
+
+    @Override
+    protected void setUp() throws Exception {
+        File file = new File(this.jksSavePath);
+        Assert.assertEquals(true, file.isDirectory());
+        super.setUp();
+    }
 
     /**
      * you can use
