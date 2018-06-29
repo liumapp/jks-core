@@ -1,10 +1,17 @@
 package com.liumapp.jks.core.certificate;
 
 import com.alibaba.fastjson.JSONObject;
+import com.liumapp.jks.core.adapter.KeyStoreAdapter;
+import com.liumapp.jks.core.adapter.KeyTool;
 import com.liumapp.jks.core.certificate.require.ExportCertificateRequire;
 import com.liumapp.jks.core.filter.RequestFilter;
+import com.liumapp.jks.core.loader.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.FileOutputStream;
+import java.security.KeyStoreException;
+import java.security.cert.Certificate;
 
 /**
  * @author liumapp
@@ -19,8 +26,21 @@ public class ExportCertificate extends RequestFilter<ExportCertificateRequire> {
 
     @Override
     public JSONObject handle(ExportCertificateRequire data) {
-        
-        return null;
+        try {
+            Resource resource = Resource.from(data.getKeystorePath());
+            KeyStoreAdapter keyStoreAdapter = KeyTool.keyStoreFrom(resource , data.getKeystorePasswd());
+            Certificate certificate = keyStoreAdapter.getCertificate(data.getAlias());
+            FileOutputStream out = new FileOutputStream(data.getCertSavePath());
+            out.write(certificate.getEncoded());
+            out.close();
+            this.jobResult.put("msg", "success");
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+            this.jobResult.put("msg", "error");
+        }
+        return this.jobResult;
     }
 
 }
+
+
