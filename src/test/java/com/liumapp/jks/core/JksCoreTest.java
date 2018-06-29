@@ -78,6 +78,8 @@ public class JksCoreTest extends TestCase {
         JksCore jksCore = new JksCore();
         ExportCertificate exportCertificate = new ExportCertificate();
         ExportCertificateRequire exportCertificateRequire = new ExportCertificateRequire();
+        exportCertificateRequire.setAlias("first-cert");
+//        exportCertificateRequire.setCertSavePath(this.jksSavePath + "/");
         JSONObject result = jksCore.doJob(exportCertificate, exportCertificateRequire);
     }
 

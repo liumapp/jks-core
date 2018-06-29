@@ -30,7 +30,7 @@ public class ExportCertificate extends RequestFilter<ExportCertificateRequire> {
             Resource resource = Resource.from(data.getKeystorePath());
             KeyStoreAdapter keyStoreAdapter = KeyTool.keyStoreFrom(resource , data.getKeystorePasswd());
             Certificate certificate = keyStoreAdapter.getCertificate(data.getAlias());
-            FileOutputStream out = new FileOutputStream(data.getCertSavePath());
+            FileOutputStream out = new FileOutputStream(data.getCertSavePath() + "/" + data.getCertName());
             out.write(certificate.getEncoded());
             out.close();
             this.jobResult.put("msg", "success");
