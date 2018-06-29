@@ -46,11 +46,10 @@ public class GenerateJksContainerRequire extends JobData {
     public GenerateJksContainerRequire() {
     }
 
-    public GenerateJksContainerRequire(String savePath, String keyStoreName, String keyStorePd, Integer keyLength, String fcName, String fcProvince, String fcCity, String fcCountry, String fcAlias, String fcPassword) {
+    public GenerateJksContainerRequire(String savePath, String keyStoreName, String keyStorePd, String fcName, String fcProvince, String fcCity, String fcCountry, String fcAlias, String fcPassword) {
         this.savePath = savePath;
         this.keyStoreName = keyStoreName;
         this.keyStorePd = keyStorePd;
-        this.keyLength = keyLength;
         this.fcName = fcName;
         this.fcProvince = fcProvince;
         this.fcCity = fcCity;
@@ -85,10 +84,6 @@ public class GenerateJksContainerRequire extends JobData {
 
     public Integer getKeyLength() {
         return keyLength;
-    }
-
-    public void setKeyLength(Integer keyLength) {
-        this.keyLength = keyLength;
     }
 
     public String getFcName() {
