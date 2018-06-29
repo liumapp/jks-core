@@ -40,10 +40,12 @@ public class GenerateCertificate extends RequestFilter<GenerateCertificateRequir
                     .country(data.getCountry())
                     .build()
                     .createInKeyStore(data.getAlias(), data.getCertPassword());
+            return JSON.toJSONString(this.jobResult)
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
+            return null;
         }
-        return null;
+
     }
 
 }
