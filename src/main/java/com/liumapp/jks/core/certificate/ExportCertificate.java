@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.FileOutputStream;
-import java.security.KeyStoreException;
 import java.security.cert.Certificate;
 
 /**
@@ -34,6 +33,7 @@ public class ExportCertificate extends RequestFilter<ExportCertificateRequire> {
             out.write(certificate.getEncoded());
             out.close();
             this.jobResult.put("msg", "success");
+            LOGGER.info("export certificate success");
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
             this.jobResult.put("msg", "error");
