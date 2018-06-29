@@ -23,4 +23,19 @@ public class JksCoreTest extends TestCase {
         JSONObject result = jksCore.doJob(generateJksContainer, generateJksContainerRequire);
     }
 
+    @Test
+    public void testGenerateCertificate () {
+
+    }
+
+    @Test
+    public void testExportCertificate () {
+
+    }
+
+    @Test
+    public void testSignCertificateToPdf () {
+
+    }
+
 }
