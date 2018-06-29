@@ -65,13 +65,12 @@ public class GenerateCertificateRequire extends JobData {
     public GenerateCertificateRequire() {
     }
 
-    public GenerateCertificateRequire(String keystorePath, String storepass, String alias, String certPassword, Integer validity, Integer keysize, String name, String province, String city, String country) {
+    public GenerateCertificateRequire(String keystorePath, String storepass, String alias, String certPassword, Integer validity, String name, String province, String city, String country) {
         this.keystorePath = keystorePath;
         this.storepass = storepass;
         this.alias = alias;
         this.certPassword = certPassword;
         this.validity = validity;
-        this.keysize = keysize;
         this.name = name;
         this.province = province;
         this.city = city;
@@ -120,10 +119,6 @@ public class GenerateCertificateRequire extends JobData {
 
     public Integer getKeysize() {
         return keysize;
-    }
-
-    public void setKeysize(Integer keysize) {
-        this.keysize = keysize;
     }
 
     public String getName() {

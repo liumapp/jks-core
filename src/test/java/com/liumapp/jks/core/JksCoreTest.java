@@ -42,7 +42,7 @@ public class JksCoreTest extends TestCase {
         generateJksContainerRequire.setFcProvince("ZJ");
         generateJksContainerRequire.setFcCity("Hangzhou");
         JSONObject result = jksCore.doJob(generateJksContainer, generateJksContainerRequire);
-        Assert.assertEquals("success",result.get("msg"));
+        Assert.assertEquals("success", result.get("msg"));
     }
 
     @Test
@@ -50,7 +50,10 @@ public class JksCoreTest extends TestCase {
         JksCore jksCore = new JksCore();
         GenerateCertificate generateCertificate = new GenerateCertificate();
         GenerateCertificateRequire generateCertificateRequire = new GenerateCertificateRequire();
+        generateCertificateRequire.setAlias("second-cert");
+        generateCertificateRequire.setCertPassword("123123");
         JSONObject result = jksCore.doJob(generateCertificate, generateCertificateRequire);
+        Assert.assertEquals("success", result.get("msg"));
     }
 
     @Test
