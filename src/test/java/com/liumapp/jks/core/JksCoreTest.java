@@ -100,6 +100,11 @@ public class JksCoreTest extends TestCase {
     }
 
     @Test
+    public void testAddMultySignatureArea () {
+        Integer number = 3;
+    }
+
+    @Test
     public void testSignCertificateToPdf () {
         JksCore jksCore = new JksCore();
 
