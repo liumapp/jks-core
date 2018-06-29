@@ -11,10 +11,10 @@ import com.alibaba.fastjson.JSONObject;
  */
 public abstract class JobDetail<T extends JobData> {
 
-    protected JobResult jobResult;
+    protected JSONObject jobResult;
 
     public JobDetail() {
-        this.jobResult = new JobResult();
+        this.jobResult = new JSONObject();
     }
 
     public abstract JSONObject handle(T data);

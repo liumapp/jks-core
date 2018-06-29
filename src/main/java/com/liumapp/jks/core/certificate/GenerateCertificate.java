@@ -1,6 +1,5 @@
 package com.liumapp.jks.core.certificate;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.jks.core.adapter.KeyStoreAdapter;
 import com.liumapp.jks.core.adapter.KeyTool;
@@ -10,7 +9,6 @@ import com.liumapp.jks.core.loader.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.security.KeyStoreException;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -40,11 +38,12 @@ public class GenerateCertificate extends RequestFilter<GenerateCertificateRequir
                     .country(data.getCountry())
                     .build()
                     .createInKeyStore(data.getAlias(), data.getCertPassword());
-            return JSON.toJSONString(this.jobResult)
+            this.jobResult.put("msg", "success");
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
-            return null;
+            this.jobResult.put("msg", "error");
         }
+        return this.jobResult;
 
     }
 
