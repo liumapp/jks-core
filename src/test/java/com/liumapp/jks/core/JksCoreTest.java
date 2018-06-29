@@ -102,6 +102,13 @@ public class JksCoreTest extends TestCase {
     @Test
     public void testAddMultySignatureArea () {
         Integer number = 3;
+        JksCore jksCore = new JksCore();
+        AddSignatureArea addSignatureArea = new AddSignatureArea();
+        AddSignatureAreaRequire addSignatureAreaRequire = new AddSignatureAreaRequire();
+        for (int i = 0 ; i < number ; i++) {
+            JSONObject result = jksCore.doJob(addSignatureArea, addSignatureAreaRequire);
+            Assert.assertEquals("success", result.get("msg"));
+        }
     }
 
     @Test
