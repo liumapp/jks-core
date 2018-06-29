@@ -32,19 +32,9 @@ public class GenerateCertificateRequire extends JobData {
     private String certPassword;
 
     /**
-     * 加密算法
+     * 证书有效期年数
      */
-    private String keyalg = "RSA";
-
-    /**
-     * 证书有效期天数
-     */
-    private Integer validity = 365;
-
-    /**
-     * 身份证号码
-     */
-    private String identityCode;
+    private Integer validity = 1;
 
     /**
      * 密钥长度
@@ -52,29 +42,9 @@ public class GenerateCertificateRequire extends JobData {
     private Integer keysize = 2048;
 
     /**
-     * 私钥密码
-     */
-    private String keypass;
-
-    /**
      * 完整的名字
      */
     private String name;
-
-    /**
-     * 密钥对拥有者名字
-     */
-    private String firstname;
-
-    /**
-     * 密钥对拥有者姓字
-     */
-    private String lastname;
-
-    /**
-     * 组织或者单位名称
-     */
-    private String organization;
 
     /**
      * 省份
@@ -87,44 +57,25 @@ public class GenerateCertificateRequire extends JobData {
     private String city;
 
     /**
-     * 区域
-     */
-    private String area;
-
-    /**
      * 国家代码
      * 例如：中国，就填写CN
      */
     private String country;
 
-    /**
-     * 性别
-     * boy or girl or androgyne
-     */
-    private String sex;
-
     public GenerateCertificateRequire() {
     }
 
-    public GenerateCertificateRequire(String keystorePath, String storepass, String alias, String certPassword, String keyalg, Integer validity, String identityCode, Integer keysize, String keypass, String name, String firstname, String lastname, String organization, String province, String city, String area, String country, String sex) {
+    public GenerateCertificateRequire(String keystorePath, String storepass, String alias, String certPassword, Integer validity, Integer keysize, String name, String province, String city, String country) {
         this.keystorePath = keystorePath;
         this.storepass = storepass;
         this.alias = alias;
         this.certPassword = certPassword;
-        this.keyalg = keyalg;
         this.validity = validity;
-        this.identityCode = identityCode;
         this.keysize = keysize;
-        this.keypass = keypass;
         this.name = name;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.organization = organization;
         this.province = province;
         this.city = city;
-        this.area = area;
         this.country = country;
-        this.sex = sex;
     }
 
     public String getKeystorePath() {
@@ -159,28 +110,12 @@ public class GenerateCertificateRequire extends JobData {
         this.certPassword = certPassword;
     }
 
-    public String getKeyalg() {
-        return keyalg;
-    }
-
-    public void setKeyalg(String keyalg) {
-        this.keyalg = keyalg;
-    }
-
     public Integer getValidity() {
         return validity;
     }
 
     public void setValidity(Integer validity) {
         this.validity = validity;
-    }
-
-    public String getIdentityCode() {
-        return identityCode;
-    }
-
-    public void setIdentityCode(String identityCode) {
-        this.identityCode = identityCode;
     }
 
     public Integer getKeysize() {
@@ -191,44 +126,12 @@ public class GenerateCertificateRequire extends JobData {
         this.keysize = keysize;
     }
 
-    public String getKeypass() {
-        return keypass;
-    }
-
-    public void setKeypass(String keypass) {
-        this.keypass = keypass;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getOrganization() {
-        return organization;
-    }
-
-    public void setOrganization(String organization) {
-        this.organization = organization;
     }
 
     public String getProvince() {
@@ -247,27 +150,11 @@ public class GenerateCertificateRequire extends JobData {
         this.city = city;
     }
 
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
-
     public String getCountry() {
         return country;
     }
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
     }
 }

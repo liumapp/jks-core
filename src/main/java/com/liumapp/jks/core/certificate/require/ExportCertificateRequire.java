@@ -19,6 +19,16 @@ public class ExportCertificateRequire extends JobData {
 
     private String certSavePath;
 
+    public ExportCertificateRequire() {
+    }
+
+    public ExportCertificateRequire(String keystorePath, String keystorePasswd, String alias, String certSavePath) {
+        this.keystorePath = keystorePath;
+        this.keystorePasswd = keystorePasswd;
+        this.alias = alias;
+        this.certSavePath = certSavePath;
+    }
+
     public String getCertSavePath() {
         return certSavePath;
     }

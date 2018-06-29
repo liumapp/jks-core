@@ -30,7 +30,7 @@ public class GenerateCertificate extends RequestFilter<GenerateCertificateRequir
             keyStoreAdapter.newKeyPair()
                     .keyLength(data.getKeysize())
                     .generateWithCertificate()
-                    .withValidity(1, ChronoUnit.YEARS)
+                    .withValidity(data.getValidity(), ChronoUnit.YEARS)
                     .withDistinguishName()
                     .commonName(data.getName())
                     .state(data.getCity())
