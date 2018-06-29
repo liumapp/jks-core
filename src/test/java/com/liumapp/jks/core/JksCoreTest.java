@@ -7,6 +7,8 @@ import com.liumapp.jks.core.certificate.require.ExportCertificateRequire;
 import com.liumapp.jks.core.certificate.require.GenerateCertificateRequire;
 import com.liumapp.jks.core.container.GenerateJksContainer;
 import com.liumapp.jks.core.container.require.GenerateJksContainerRequire;
+import com.liumapp.jks.core.signature.AddSignatureArea;
+import com.liumapp.jks.core.signature.require.AddSignatureAreaRequire;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -85,6 +87,15 @@ public class JksCoreTest extends TestCase {
         exportCertificateRequire.setKeystoreName("demo.ks");
         exportCertificateRequire.setKeystorePasswd("123456");
         JSONObject result = jksCore.doJob(exportCertificate, exportCertificateRequire);
+        Assert.assertEquals("success", result.get("msg"));
+    }
+
+    @Test
+    public void testAddSignatureArea () {
+        JksCore jksCore = new JksCore();
+        AddSignatureArea addSignatureArea = new AddSignatureArea();
+        AddSignatureAreaRequire addSignatureAreaRequire = new AddSignatureAreaRequire();
+        JSONObject result = jksCore.doJob(addSignatureArea, addSignatureAreaRequire);
         Assert.assertEquals("success", result.get("msg"));
     }
 
