@@ -39,10 +39,12 @@ public class GenerateJksContainer extends RequestFilter<GenerateJksContainerRequ
                     .build()
                     .createInKeyStore(data.getFcAlias(), data.getFcPassword())
                     .writeTo(out);
+            this.jobResult.put("msg", "success");
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
+            this.jobResult.put("msg", "error");
         }
-        return null;
+        return this.jobResult;
     }
 
 }
