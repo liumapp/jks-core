@@ -91,7 +91,7 @@ public class JksCoreTest extends TestCase {
     @Test
     public void testSignCertificateToPdf () {
         JksCore jksCore = new JksCore();
-
+        
     }
 
 }
