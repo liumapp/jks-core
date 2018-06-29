@@ -9,6 +9,7 @@ import com.liumapp.jks.core.loader.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.FileOutputStream;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -39,6 +40,9 @@ public class GenerateCertificate extends RequestFilter<GenerateCertificateRequir
                     .country(data.getCountry())
                     .build()
                     .createInKeyStore(data.getAlias(), data.getCertPassword());
+            FileOutputStream out = new FileOutputStream(filename);
+            keyStoreAdapter.writeTo(out);
+            out.close();
             this.jobResult.put("msg", "success");
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);

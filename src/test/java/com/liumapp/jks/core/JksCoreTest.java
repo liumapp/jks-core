@@ -22,7 +22,7 @@ import java.io.File;
  */
 public class JksCoreTest extends TestCase {
 
-    private String jksSavePath = "/usr/local/tomcat/project/jks-core/";
+    private String jksSavePath = "/usr/local/tomcat/project/jks-core";
 
     @Override
     protected void setUp() throws Exception {
@@ -65,9 +65,10 @@ public class JksCoreTest extends TestCase {
         generateCertificateRequire.setProvince("ZJ");
         generateCertificateRequire.setCity("Hangzhou");
         generateCertificateRequire.setKeystorePath(this.jksSavePath);
+        generateCertificateRequire.setKeystoreName("demo.ks");
         generateCertificateRequire.setStorepass("123456");
         generateCertificateRequire.setValidity(1);
-        generateCertificateRequire.setName("liumapp2");
+        generateCertificateRequire.setName("zhangsan");
         JSONObject result = jksCore.doJob(generateCertificate, generateCertificateRequire);
         Assert.assertEquals("success", result.get("msg"));
     }
