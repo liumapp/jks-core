@@ -24,7 +24,7 @@ import java.io.File;
  */
 public class JksCoreTest extends TestCase {
 
-    private String jksSavePath = "/usr/local/tomcat/project/jks-core/data";
+    private String jksSavePath = "/usr/local/tomcat/project/jks-core/data/";
 
     @Override
     protected void setUp() throws Exception {
