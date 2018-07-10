@@ -1,6 +1,7 @@
 package com.liumapp.jks.core.signature.require;
 
 import com.itextpdf.text.pdf.security.DigestAlgorithms;
+import com.itextpdf.text.pdf.security.MakeSignature;
 import com.liumapp.jks.core.job.JobData;
 
 /**
@@ -38,7 +39,13 @@ public class SignPdfRequire extends JobData {
 
     private String digestAlgorithm = DigestAlgorithms.SHA256;
 
+    private MakeSignature.CryptoStandard sigtype = MakeSignature.CryptoStandard.CMS;
+
     public SignPdfRequire() {
+    }
+
+    public MakeSignature.CryptoStandard getSigtype() {
+        return sigtype;
     }
 
     public String getDigestAlgorithm() {
