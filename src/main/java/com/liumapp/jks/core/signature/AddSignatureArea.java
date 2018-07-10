@@ -10,8 +10,7 @@ import com.liumapp.jks.core.signature.require.AddSignatureAreaRequire;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.*;
 
 /**
  * @author liumapp
@@ -26,10 +25,12 @@ public class AddSignatureArea extends RequestFilter<AddSignatureAreaRequire> {
 
     @Override
     public JSONObject handle(AddSignatureAreaRequire data) {
+        InputStream pdfStream = null;
         try {
-            PdfReader reader = new PdfReader(data.getPdfSavePath() + "/" + data.getPdfFileName());
+            pdfStream = new FileInputStream(data.getPdfSavePath() + "/" + data.getPdfFileName());
+            PdfReader reader = new PdfReader(pdfStream);
             FileOutputStream out = new FileOutputStream(new File(data.getResultSavePath() + "/" + data.getPdfFileName()));
-            File temp = new File(data.getPdfSavePath() + "/" + "tmp.pdf");
+            File temp = new File(data.getResultSavePath() + "/" + data.getResultSaveName());
             PdfStamper stamper = PdfStamper.createSignature(reader, out, '\0', temp, true);
             PdfSignatureAppearance appearance = stamper.getSignatureAppearance();
             appearance.setReason(data.getReason());
@@ -44,6 +45,12 @@ public class AddSignatureArea extends RequestFilter<AddSignatureAreaRequire> {
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
             this.jobResult.put("msg", "error");
+        } finally {
+            try {
+                pdfStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return this.jobResult;
     }
