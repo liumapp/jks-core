@@ -15,6 +15,8 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
 
     @Override
     public JSONObject handle(SignPdfRequire data) {
+        this.loggerRequest(data);
+        
         return null;
     }
 
