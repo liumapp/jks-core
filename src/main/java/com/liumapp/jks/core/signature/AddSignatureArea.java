@@ -25,6 +25,7 @@ public class AddSignatureArea extends RequestFilter<AddSignatureAreaRequire> {
 
     @Override
     public JSONObject handle(AddSignatureAreaRequire data) {
+        this.loggerRequest(data);
         InputStream pdfStream = null;
         try {
             pdfStream = new FileInputStream(data.getPdfSavePath() + "/" + data.getPdfFileName());
