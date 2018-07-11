@@ -3,6 +3,7 @@ package com.liumapp.jks.core.signature.require;
 import com.itextpdf.text.pdf.security.DigestAlgorithms;
 import com.itextpdf.text.pdf.security.MakeSignature;
 import com.liumapp.jks.core.job.JobData;
+import com.liumapp.jks.core.loader.JksLoader;
 import com.liumapp.jks.core.loader.require.ChainLoadingRequire;
 import com.liumapp.jks.core.loader.require.JksLoadingRequire;
 
@@ -50,7 +51,8 @@ public class SignPdfRequire extends JobData {
     public SignPdfRequire() {
     }
 
-    public ChainLoadingRequire getChainLoadingRequire() {
+    public ChainLoadingRequire getChainLoadingRequire(JksLoader.ActiveKeyStore activeKeyStore) {
+        chainLoadingRequire.setActiveKeyStore(activeKeyStore);
         return chainLoadingRequire;
     }
 

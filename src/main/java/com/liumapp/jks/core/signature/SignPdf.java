@@ -23,8 +23,8 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
         this.loggerRequest(data);
         try {
             JksLoader.ActiveKeyStore activeJKS = JksLoader.getInstance(data.getJksLoadingRequire()).getActiveKeyStore();
-            ChainLoader.ActiveCertificate[] activeChain = ChainLoader.getInstance(data.getChainLoadingRequire()).getActiveCertificateChain();
-
+            ChainLoader.ActiveCertificate[] activeChain = ChainLoader.getInstance(data.getChainLoadingRequire(activeJKS)).getActiveCertificateChain();
+            
         } catch (KeyStoreException e) {
             e.printStackTrace();
         }
