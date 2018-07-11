@@ -6,7 +6,6 @@ import com.liumapp.jks.core.loader.ChainLoader;
 import com.liumapp.jks.core.loader.JksLoader;
 import com.liumapp.jks.core.signature.require.SignPdfRequire;
 
-import java.security.KeyStore;
 import java.security.KeyStoreException;
 
 /**
@@ -22,9 +21,12 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
     public JSONObject handle(SignPdfRequire data) {
         this.loggerRequest(data);
         try {
-            JksLoader.ActiveKeyStore activeJKS = JksLoader.getInstance(data.getJksLoadingRequire()).getActiveKeyStore();
-            ChainLoader.ActiveCertificate[] activeChain = ChainLoader.getInstance(data.getChainLoadingRequire(activeJKS)).getActiveCertificateChain();
-            
+            JksLoader.ActiveKeyStore activeJKS = JksLoader
+                    .getInstance(data.getJksLoadingRequire())
+                    .getActiveKeyStore();
+            ChainLoader.ActiveCertificate[] activeChain = ChainLoader
+                    .getInstance(data.getChainLoadingRequire(activeJKS))
+                    .getActiveCertificateChain();
         } catch (KeyStoreException e) {
             e.printStackTrace();
         }
