@@ -3,6 +3,8 @@ package com.liumapp.jks.core.signature.require;
 import com.liumapp.jks.core.job.JobData;
 
 /**
+ * under coding , plz do not use right now
+ * todo
  * @author liumapp
  * @file AddSignatureAreaRequire.java
  * @email liumapp.com@gmail.com

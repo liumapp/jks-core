@@ -23,6 +23,10 @@ public class AddSignatureArea extends RequestFilter<AddSignatureAreaRequire> {
 
     private static Logger LOGGER = LoggerFactory.getLogger(AddSignatureArea.class);
 
+    /**
+     * under coding , plz do not use right now
+     * todo
+     */
     @Override
     public JSONObject handle(AddSignatureAreaRequire data) {
         this.loggerRequest(data);
