@@ -13,6 +13,8 @@ public class JksLoadingRequire {
 
     private String ksPath;
 
+    private String ksName;
+
     private char[] ksPassword;
 
     private String ksType = KeyStore.getDefaultType();
@@ -20,9 +22,18 @@ public class JksLoadingRequire {
     public JksLoadingRequire() {
     }
 
-    public JksLoadingRequire(String ksPath, char[] ksPassword) {
+    public JksLoadingRequire(String ksPath, String ksName, char[] ksPassword) {
         this.ksPath = ksPath;
+        this.ksName = ksName;
         this.ksPassword = ksPassword;
+    }
+
+    public String getKsName() {
+        return ksName;
+    }
+
+    public void setKsName(String ksName) {
+        this.ksName = ksName;
     }
 
     public String getKsType() {
