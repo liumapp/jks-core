@@ -1,5 +1,7 @@
 package com.liumapp.jks.core.loader.require;
 
+import com.liumapp.jks.core.loader.JksLoader;
+
 /**
  * @author liumapp
  * @file PrivateKeyLoadingRequire.java
@@ -9,6 +11,36 @@ package com.liumapp.jks.core.loader.require;
  */
 public class PrivateKeyLoadingRequire {
 
+    private String alias;
 
+    private char[] certPassword;
 
+    private JksLoader.ActiveKeyStore activeKeyStore;
+
+    public PrivateKeyLoadingRequire() {
+    }
+
+    public char[] getCertPassword() {
+        return certPassword;
+    }
+
+    public void setCertPassword(char[] certPassword) {
+        this.certPassword = certPassword;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public JksLoader.ActiveKeyStore getActiveKeyStore() {
+        return activeKeyStore;
+    }
+
+    public void setActiveKeyStore(JksLoader.ActiveKeyStore activeKeyStore) {
+        this.activeKeyStore = activeKeyStore;
+    }
 }

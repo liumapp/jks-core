@@ -1,5 +1,12 @@
 package com.liumapp.jks.core.loader;
 
+import com.liumapp.jks.core.loader.require.PrivateKeyLoadingRequire;
+
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.UnrecoverableKeyException;
+
 /**
  * @author liumapp
  * @file PrivateKeyLoader.java
@@ -9,6 +16,20 @@ package com.liumapp.jks.core.loader;
  */
 public class PrivateKeyLoader {
 
+    private PrivateKeyLoadingRequire require;
 
+    public static PrivateKeyLoader getInstance (PrivateKeyLoadingRequire require) {
+        PrivateKeyLoader privateKeyLoader = new PrivateKeyLoader();
+        privateKeyLoader.require = require;
+        return privateKeyLoader;
+    }
+
+    public abstract class ActivePrivateKey implements PrivateKey {
+
+    }
+
+    public ActivePrivateKey getActivePrivateKey () throws UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException {
+        return (ActivePrivateKey) require.getActiveKeyStore().getKey(require.getAlias(), require.getCertPassword());
+    }
 
 }

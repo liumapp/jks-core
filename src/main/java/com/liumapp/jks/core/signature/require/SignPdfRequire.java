@@ -6,6 +6,7 @@ import com.liumapp.jks.core.job.JobData;
 import com.liumapp.jks.core.loader.JksLoader;
 import com.liumapp.jks.core.loader.require.ChainLoadingRequire;
 import com.liumapp.jks.core.loader.require.JksLoadingRequire;
+import com.liumapp.jks.core.loader.require.PrivateKeyLoadingRequire;
 
 /**
  * @author liumapp
@@ -19,6 +20,8 @@ public class SignPdfRequire extends JobData {
     private JksLoadingRequire jksLoadingRequire;
 
     private ChainLoadingRequire chainLoadingRequire;
+
+    private PrivateKeyLoadingRequire privateKeyLoadingRequire;
 
     private String pdfSavePath;
 
@@ -49,6 +52,14 @@ public class SignPdfRequire extends JobData {
     private MakeSignature.CryptoStandard sigtype = MakeSignature.CryptoStandard.CMS;
 
     public SignPdfRequire() {
+    }
+
+    public PrivateKeyLoadingRequire getPrivateKeyLoadingRequire() {
+        return privateKeyLoadingRequire;
+    }
+
+    public void setPrivateKeyLoadingRequire(PrivateKeyLoadingRequire privateKeyLoadingRequire) {
+        this.privateKeyLoadingRequire = privateKeyLoadingRequire;
     }
 
     public ChainLoadingRequire getChainLoadingRequire(JksLoader.ActiveKeyStore activeKeyStore) {
