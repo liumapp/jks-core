@@ -16,9 +16,9 @@ import java.security.cert.CertificateException;
  * @homepage http://www.liumapp.com
  * @date 7/11/18
  */
-class JksLoader {
+public class JksLoader {
 
-    JksLoadingRequire require;
+    private JksLoadingRequire require;
 
     public static JksLoader getInstance (JksLoadingRequire require) {
         JksLoader jksLoader = new JksLoader();
@@ -26,14 +26,29 @@ class JksLoader {
         return jksLoader;
     }
 
-    private KeyStore getActiveKeyStore () {
+    public class ActiveKeyStore extends KeyStore {
+
+        /**
+         * Creates a KeyStore object of the given type, and encapsulates the given
+         * provider implementation (SPI object) in it.
+         *
+         * @param keyStoreSpi the provider implementation.
+         * @param provider    the provider.
+         * @param type        the keystore type.
+         */
+        protected ActiveKeyStore(KeyStoreSpi keyStoreSpi, Provider provider, String type) {
+            super(keyStoreSpi, provider, type);
+        }
+    }
+
+    public ActiveKeyStore getActiveKeyStore () {
         BouncyCastleProvider bcp = new BouncyCastleProvider();
         Security.insertProviderAt(bcp, require.getPosition());
-        KeyStore ks = null;
+        ActiveKeyStore ks = null;
         FileInputStream in = null;
         try {
             in = new FileInputStream(require.getKsPath() + "/" + require.getKsName());
-            ks = KeyStore.getInstance(require.getKsType());
+            ks = (ActiveKeyStore) KeyStore.getInstance(require.getKsType());
             try {
                 ks.load(in, require.getKsPassword());
             } catch (CertificateException e) {
