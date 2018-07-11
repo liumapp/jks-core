@@ -3,7 +3,9 @@ package com.liumapp.jks.core.signature.require;
 import com.itextpdf.text.pdf.security.DigestAlgorithms;
 import com.itextpdf.text.pdf.security.MakeSignature;
 import com.liumapp.jks.core.job.JobData;
+import com.liumapp.jks.core.loader.ChainLoader;
 import com.liumapp.jks.core.loader.JksLoader;
+import com.liumapp.jks.core.loader.PrivateKeyLoader;
 import com.liumapp.jks.core.loader.require.ChainLoadingRequire;
 import com.liumapp.jks.core.loader.require.JksLoadingRequire;
 import com.liumapp.jks.core.loader.require.PrivateKeyLoadingRequire;
@@ -22,6 +24,12 @@ public class SignPdfRequire extends JobData {
     private ChainLoadingRequire chainLoadingRequire;
 
     private PrivateKeyLoadingRequire privateKeyLoadingRequire;
+
+    private JksLoader.ActiveKeyStore activeKeyStore;
+
+    private ChainLoader.ActiveCertificate[] activeCertificates;
+
+    private PrivateKeyLoader.ActivePrivateKey activePrivateKey;
 
     private String pdfSavePath;
 
@@ -53,6 +61,8 @@ public class SignPdfRequire extends JobData {
 
     public SignPdfRequire() {
     }
+
+
 
     public PrivateKeyLoadingRequire getPrivateKeyLoadingRequire() {
         return privateKeyLoadingRequire;
