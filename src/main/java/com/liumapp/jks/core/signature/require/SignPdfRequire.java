@@ -9,6 +9,13 @@ import com.liumapp.jks.core.loader.PrivateKeyLoader;
 import com.liumapp.jks.core.loader.require.ChainLoadingRequire;
 import com.liumapp.jks.core.loader.require.JksLoadingRequire;
 import com.liumapp.jks.core.loader.require.PrivateKeyLoadingRequire;
+import com.liumapp.jks.core.loader.service.ActiveChainService;
+import com.liumapp.jks.core.loader.service.ActiveKeyStoreService;
+import com.liumapp.jks.core.loader.service.ActivePrivateKeyService;
+
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
 
 /**
  * @author liumapp
@@ -17,7 +24,7 @@ import com.liumapp.jks.core.loader.require.PrivateKeyLoadingRequire;
  * @homepage http://www.liumapp.com
  * @date 7/10/18
  */
-public class SignPdfRequire extends JobData {
+public class SignPdfRequire extends JobData implements ActiveChainService, ActiveKeyStoreService, ActivePrivateKeyService {
 
     private JksLoadingRequire jksLoadingRequire;
 
@@ -62,7 +69,32 @@ public class SignPdfRequire extends JobData {
     public SignPdfRequire() {
     }
 
+    public void initSecurityInfo () throws KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException {
+        this.activeKeyStore = this.buildActiveKeyStore(this.getJksLoadingRequire());
+        this.activeCertificates = this.buildActiveChain(this.getChainLoadingRequire(this.activeKeyStore));
+        this.activePrivateKey = this.buildActivePrivateKey(this.getPrivateKeyLoadingRequire());
+    }
 
+    @Override
+    public ChainLoader.ActiveCertificate[] buildActiveChain(ChainLoadingRequire require) throws KeyStoreException {
+        return ChainLoader
+               .getInstance(this.getChainLoadingRequire(this.activeKeyStore))
+               .getActiveCertificateChain();
+    }
+
+    @Override
+    public JksLoader.ActiveKeyStore buildActiveKeyStore(JksLoadingRequire require) {
+        return JksLoader
+               .getInstance(this.getJksLoadingRequire())
+               .getActiveKeyStore();
+    }
+
+    @Override
+    public PrivateKeyLoader.ActivePrivateKey buildActivePrivateKey(PrivateKeyLoadingRequire require) throws UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException {
+        return PrivateKeyLoader
+               .getInstance(this.getPrivateKeyLoadingRequire())
+               .getActivePrivateKey();
+    }
 
     public PrivateKeyLoadingRequire getPrivateKeyLoadingRequire() {
         return privateKeyLoadingRequire;
@@ -192,4 +224,5 @@ public class SignPdfRequire extends JobData {
     public void setSignFieldName(String signFieldName) {
         this.signFieldName = signFieldName;
     }
+
 }

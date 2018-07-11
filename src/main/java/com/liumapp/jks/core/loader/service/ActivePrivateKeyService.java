@@ -3,6 +3,10 @@ package com.liumapp.jks.core.loader.service;
 import com.liumapp.jks.core.loader.PrivateKeyLoader;
 import com.liumapp.jks.core.loader.require.PrivateKeyLoadingRequire;
 
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+
 /**
  * @author liumapp
  * @file ActivePrivateKeyService.java
@@ -12,6 +16,6 @@ import com.liumapp.jks.core.loader.require.PrivateKeyLoadingRequire;
  */
 public interface ActivePrivateKeyService {
 
-    public PrivateKeyLoader.ActivePrivateKey buildActivePrivateKey (PrivateKeyLoadingRequire require);
+    public PrivateKeyLoader.ActivePrivateKey buildActivePrivateKey (PrivateKeyLoadingRequire require) throws UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException;
 
 }

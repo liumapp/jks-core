@@ -3,6 +3,8 @@ package com.liumapp.jks.core.loader.service;
 import com.liumapp.jks.core.loader.ChainLoader;
 import com.liumapp.jks.core.loader.require.ChainLoadingRequire;
 
+import java.security.KeyStoreException;
+
 /**
  * @author liumapp
  * @file ActiveChainService.java
@@ -12,6 +14,6 @@ import com.liumapp.jks.core.loader.require.ChainLoadingRequire;
  */
 public interface ActiveChainService {
 
-    public ChainLoader.ActiveCertificate[] buildActiveChain (ChainLoadingRequire require);
+    public ChainLoader.ActiveCertificate[] buildActiveChain (ChainLoadingRequire require) throws KeyStoreException;
 
 }

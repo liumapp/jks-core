@@ -11,6 +11,7 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 
+
 /**
  * @author liumapp
  * @file SignPdf.java
@@ -24,21 +25,8 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
     public JSONObject handle(SignPdfRequire data) {
         this.loggerRequest(data);
         try {
-            JksLoader.ActiveKeyStore activeJKS = JksLoader
-                    .getInstance(data.getJksLoadingRequire())
-                    .getActiveKeyStore();
-            ChainLoader.ActiveCertificate[] activeChain = ChainLoader
-                    .getInstance(data.getChainLoadingRequire(activeJKS))
-                    .getActiveCertificateChain();
-            PrivateKeyLoader.ActivePrivateKey activePrivateKey = PrivateKeyLoader
-                    .getInstance(data.getPrivateKeyLoadingRequire())
-                    .getActivePrivateKey();
-
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (UnrecoverableKeyException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
+            data.initSecurityInfo();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
