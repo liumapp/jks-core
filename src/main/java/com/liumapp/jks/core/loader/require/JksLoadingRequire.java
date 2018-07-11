@@ -1,5 +1,7 @@
 package com.liumapp.jks.core.loader.require;
 
+import java.security.KeyStore;
+
 /**
  * @author liumapp
  * @file JksLoadingRequire.java
@@ -11,14 +13,20 @@ public class JksLoadingRequire {
 
     private String ksPath;
 
-    private String ksPassword;
+    private char[] ksPassword;
+
+    private String ksType = KeyStore.getDefaultType();
 
     public JksLoadingRequire() {
     }
 
-    public JksLoadingRequire(String ksPath, String ksPassword) {
+    public JksLoadingRequire(String ksPath, char[] ksPassword) {
         this.ksPath = ksPath;
         this.ksPassword = ksPassword;
+    }
+
+    public String getKsType() {
+        return ksType;
     }
 
     public String getKsPath() {
@@ -29,11 +37,11 @@ public class JksLoadingRequire {
         this.ksPath = ksPath;
     }
 
-    public String getKsPassword() {
+    public char[] getKsPassword() {
         return ksPassword;
     }
 
-    public void setKsPassword(String ksPassword) {
+    public void setKsPassword(char[] ksPassword) {
         this.ksPassword = ksPassword;
     }
 }
