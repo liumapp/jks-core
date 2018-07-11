@@ -2,15 +2,7 @@ package com.liumapp.jks.core.signature;
 
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.jks.core.filter.RequestFilter;
-import com.liumapp.jks.core.loader.ChainLoader;
-import com.liumapp.jks.core.loader.JksLoader;
-import com.liumapp.jks.core.loader.PrivateKeyLoader;
 import com.liumapp.jks.core.signature.require.SignPdfRequire;
-
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableKeyException;
-
 
 /**
  * @author liumapp
@@ -26,6 +18,7 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
         this.loggerRequest(data);
         try {
             data.initSecurityInfo();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
