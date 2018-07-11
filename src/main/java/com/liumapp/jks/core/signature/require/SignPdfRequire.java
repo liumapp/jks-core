@@ -3,6 +3,7 @@ package com.liumapp.jks.core.signature.require;
 import com.itextpdf.text.pdf.security.DigestAlgorithms;
 import com.itextpdf.text.pdf.security.MakeSignature;
 import com.liumapp.jks.core.job.JobData;
+import com.liumapp.jks.core.loader.require.ChainLoadingRequire;
 import com.liumapp.jks.core.loader.require.JksLoadingRequire;
 
 /**
@@ -15,6 +16,8 @@ import com.liumapp.jks.core.loader.require.JksLoadingRequire;
 public class SignPdfRequire extends JobData {
 
     private JksLoadingRequire jksLoadingRequire;
+
+    private ChainLoadingRequire chainLoadingRequire;
 
     private String pdfSavePath;
 
@@ -45,6 +48,14 @@ public class SignPdfRequire extends JobData {
     private MakeSignature.CryptoStandard sigtype = MakeSignature.CryptoStandard.CMS;
 
     public SignPdfRequire() {
+    }
+
+    public ChainLoadingRequire getChainLoadingRequire() {
+        return chainLoadingRequire;
+    }
+
+    public void setChainLoadingRequire(ChainLoadingRequire chainLoadingRequire) {
+        this.chainLoadingRequire = chainLoadingRequire;
     }
 
     public JksLoadingRequire getJksLoadingRequire() {
