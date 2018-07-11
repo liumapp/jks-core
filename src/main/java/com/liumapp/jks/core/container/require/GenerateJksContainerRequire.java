@@ -58,79 +58,88 @@ public class GenerateJksContainerRequire extends JobData {
         this.fcPassword = fcPassword;
     }
 
+    public Integer getKeyLength() {
+        return keyLength;
+    }
+
     public String getSavePath() {
         return savePath;
     }
 
-    public void setSavePath(String savePath) {
+    public GenerateJksContainerRequire setSavePath(String savePath) {
         this.savePath = savePath;
+        return this;
     }
 
     public String getKeyStoreName() {
         return keyStoreName;
     }
 
-    public void setKeyStoreName(String keyStoreName) {
+    public GenerateJksContainerRequire setKeyStoreName(String keyStoreName) {
         this.keyStoreName = keyStoreName;
+        return this;
     }
 
     public String getKeyStorePd() {
         return keyStorePd;
     }
 
-    public void setKeyStorePd(String keyStorePd) {
+    public GenerateJksContainerRequire setKeyStorePd(String keyStorePd) {
         this.keyStorePd = keyStorePd;
-    }
-
-    public Integer getKeyLength() {
-        return keyLength;
+        return this;
     }
 
     public String getFcName() {
         return fcName;
     }
 
-    public void setFcName(String fcName) {
+    public GenerateJksContainerRequire setFcName(String fcName) {
         this.fcName = fcName;
+        return this;
     }
 
     public String getFcProvince() {
         return fcProvince;
     }
 
-    public void setFcProvince(String fcProvince) {
+    public GenerateJksContainerRequire setFcProvince(String fcProvince) {
         this.fcProvince = fcProvince;
+        return this;
     }
 
     public String getFcCity() {
         return fcCity;
     }
 
-    public void setFcCity(String fcCity) {
+    public GenerateJksContainerRequire setFcCity(String fcCity) {
         this.fcCity = fcCity;
+        return this;
     }
 
     public String getFcCountry() {
         return fcCountry;
     }
 
-    public void setFcCountry(String fcCountry) {
+    public GenerateJksContainerRequire setFcCountry(String fcCountry) {
         this.fcCountry = fcCountry;
+        return this;
     }
 
     public String getFcAlias() {
         return fcAlias;
     }
 
-    public void setFcAlias(String fcAlias) {
+    public GenerateJksContainerRequire setFcAlias(String fcAlias) {
         this.fcAlias = fcAlias;
+        return this;
     }
 
     public String getFcPassword() {
         return fcPassword;
     }
 
-    public void setFcPassword(String fcPassword) {
+    public GenerateJksContainerRequire setFcPassword(String fcPassword) {
         this.fcPassword = fcPassword;
+        return this;
     }
 }

@@ -69,6 +69,8 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
     public SignPdfRequire() {
     }
 
+
+
     public void initSecurityInfo () throws KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException {
         this.activeKeyStore = this.buildActiveKeyStore(this.getJksLoadingRequire());
         this.activeCertificates = this.buildActiveChain(this.getChainLoadingRequire(this.activeKeyStore));

@@ -44,15 +44,15 @@ public class JksCoreTest extends TestCase {
         JksCore jksCore = new JksCore();
         GenerateJksContainer generateJksContainer = new GenerateJksContainer();
         GenerateJksContainerRequire generateJksContainerRequire = new GenerateJksContainerRequire();
-        generateJksContainerRequire.setSavePath(this.jksSavePath);//container save path
-        generateJksContainerRequire.setKeyStoreName("demo.ks");
-        generateJksContainerRequire.setKeyStorePd("123456");//container password
-        generateJksContainerRequire.setFcAlias("first-cert");//alias of first certificate
-        generateJksContainerRequire.setFcPassword("123123");//password of first certificate
-        generateJksContainerRequire.setFcName("liumapp");
-        generateJksContainerRequire.setFcCountry("CN");
-        generateJksContainerRequire.setFcProvince("ZJ");
-        generateJksContainerRequire.setFcCity("Hangzhou");
+        generateJksContainerRequire.setSavePath(this.jksSavePath)
+                        .setKeyStoreName("demo.ks")
+                        .setKeyStorePd("123456")//container password
+                        .setFcAlias("first-cert")//alias of first certificate
+                        .setFcPassword("123123")//password of first certificate
+                        .setFcName("liumapp")
+                        .setFcCountry("CN")
+                        .setFcProvince("ZJ")
+                        .setFcCity("Hangzhou");
         JSONObject result = jksCore.doJob(generateJksContainer, generateJksContainerRequire);
         Assert.assertEquals("success", result.get("msg"));
     }
