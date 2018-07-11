@@ -1,5 +1,7 @@
 package com.liumapp.jks.core.loader.require;
 
+import com.liumapp.jks.core.loader.JksLoader;
+
 /**
  * @author liumapp
  * @file ChainLoadingRequire.java
@@ -11,11 +13,22 @@ public class ChainLoadingRequire {
 
     private String alias;
 
+    private JksLoader.ActiveKeyStore activeKeyStore;
+
     public ChainLoadingRequire() {
     }
 
-    public ChainLoadingRequire(String alias) {
+    public ChainLoadingRequire(String alias, JksLoader.ActiveKeyStore activeKeyStore) {
         this.alias = alias;
+        this.activeKeyStore = activeKeyStore;
+    }
+
+    public JksLoader.ActiveKeyStore getActiveKeyStore() {
+        return activeKeyStore;
+    }
+
+    public void setActiveKeyStore(JksLoader.ActiveKeyStore activeKeyStore) {
+        this.activeKeyStore = activeKeyStore;
     }
 
     public String getAlias() {
