@@ -1,16 +1,12 @@
 package com.liumapp.jks.core.loader;
 
 import com.liumapp.jks.core.loader.require.JksLoadingRequire;
-import com.liumapp.jks.core.loader.service.JksLoadingService;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.Security;
+import java.security.*;
 import java.security.cert.CertificateException;
 
 /**
@@ -22,9 +18,17 @@ import java.security.cert.CertificateException;
  */
 class JksLoader {
 
-    public static KeyStore getActiveKeyStore (JksLoadingRequire require) {
+    JksLoadingRequire require;
+
+    public static JksLoader getInstance (JksLoadingRequire require) {
+        JksLoader jksLoader = new JksLoader();
+        jksLoader.require = require;
+        return jksLoader;
+    }
+
+    private KeyStore getActiveKeyStore () {
         BouncyCastleProvider bcp = new BouncyCastleProvider();
-        Security.insertProviderAt(bcp, 1);
+        Security.insertProviderAt(bcp, require.getPosition());
         KeyStore ks = null;
         FileInputStream in = null;
         try {

@@ -19,6 +19,12 @@ public class JksLoadingRequire {
 
     private String ksType = KeyStore.getDefaultType();
 
+    /**
+     * the preference position that the caller would
+     * like for provider.
+     */
+    private Integer position = 1;
+
     public JksLoadingRequire() {
     }
 
@@ -30,6 +36,10 @@ public class JksLoadingRequire {
 
     public String getKsName() {
         return ksName;
+    }
+
+    public Integer getPosition() {
+        return position;
     }
 
     public void setKsName(String ksName) {
