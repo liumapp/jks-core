@@ -20,20 +20,9 @@ import java.security.cert.CertificateException;
  * @homepage http://www.liumapp.com
  * @date 7/11/18
  */
-public class JksLoader implements JksLoadingService {
+class JksLoader {
 
-    private KeyStore ks = null;
-
-    public JksLoader(JksLoadingRequire require) {
-        this.ks = this.initKeyStore(require);
-    }
-
-    public KeyStore getKs() {
-        return ks;
-    }
-
-    @Override
-    public KeyStore initKeyStore(JksLoadingRequire require) {
+    public static KeyStore getActiveKeyStore (JksLoadingRequire require) {
         BouncyCastleProvider bcp = new BouncyCastleProvider();
         Security.insertProviderAt(bcp, 1);
         KeyStore ks = null;
@@ -63,4 +52,5 @@ public class JksLoader implements JksLoadingService {
         }
         return ks;
     }
+
 }
