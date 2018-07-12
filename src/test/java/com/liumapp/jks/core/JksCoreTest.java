@@ -94,43 +94,43 @@ public class JksCoreTest extends TestCase {
     /**
      * todo
      */
-    @Test
-    @Ignore
-    public void testAddSignatureArea () {
-        JksCore jksCore = new JksCore();
-        AddSignatureArea addSignatureArea = new AddSignatureArea();
-        AddSignatureAreaRequire addSignatureAreaRequire = new AddSignatureAreaRequire();
-        addSignatureAreaRequire.setFirstX(100);
-        addSignatureAreaRequire.setFirstY(100);
-        addSignatureAreaRequire.setSecondX(250);
-        addSignatureAreaRequire.setSecondY(250);
-        addSignatureAreaRequire.setLocation("this is location value");
-        addSignatureAreaRequire.setReason("this is reason value");
-        addSignatureAreaRequire.setPageNum(1);
-        addSignatureAreaRequire.setPdfSavePath(this.jksSavePath);
-        addSignatureAreaRequire.setPdfFileName("test.pdf");
-        addSignatureAreaRequire.setResultSavePath(this.jksSavePath);
-        addSignatureAreaRequire.setResultSaveName("test-with-signature.pdf");
-        addSignatureAreaRequire.setSignFieldName("signature");
-        JSONObject result = jksCore.doJob(addSignatureArea, addSignatureAreaRequire);
-        Assert.assertEquals("success", result.get("msg"));
-    }
+//    @Test
+//    @Ignore
+//    public void testAddSignatureArea () {
+//        JksCore jksCore = new JksCore();
+//        AddSignatureArea addSignatureArea = new AddSignatureArea();
+//        AddSignatureAreaRequire addSignatureAreaRequire = new AddSignatureAreaRequire();
+//        addSignatureAreaRequire.setFirstX(100);
+//        addSignatureAreaRequire.setFirstY(100);
+//        addSignatureAreaRequire.setSecondX(250);
+//        addSignatureAreaRequire.setSecondY(250);
+//        addSignatureAreaRequire.setLocation("this is location value");
+//        addSignatureAreaRequire.setReason("this is reason value");
+//        addSignatureAreaRequire.setPageNum(1);
+//        addSignatureAreaRequire.setPdfSavePath(this.jksSavePath);
+//        addSignatureAreaRequire.setPdfFileName("test.pdf");
+//        addSignatureAreaRequire.setResultSavePath(this.jksSavePath);
+//        addSignatureAreaRequire.setResultSaveName("test-with-signature.pdf");
+//        addSignatureAreaRequire.setSignFieldName("signature");
+//        JSONObject result = jksCore.doJob(addSignatureArea, addSignatureAreaRequire);
+//        Assert.assertEquals("success", result.get("msg"));
+//    }
 
     /**
      * todo
      */
-    @Test
-    @Ignore
-    public void testAddMultySignatureArea () {
-        Integer number = 3;
-        JksCore jksCore = new JksCore();
-        AddSignatureArea addSignatureArea = new AddSignatureArea();
-        AddSignatureAreaRequire addSignatureAreaRequire = new AddSignatureAreaRequire();
-        for (int i = 0 ; i < number ; i++) {
-            JSONObject result = jksCore.doJob(addSignatureArea, addSignatureAreaRequire);
-            Assert.assertEquals("success", result.get("msg"));
-        }
-    }
+//    @Test
+//    @Ignore
+//    public void testAddMultySignatureArea () {
+//        Integer number = 3;
+//        JksCore jksCore = new JksCore();
+//        AddSignatureArea addSignatureArea = new AddSignatureArea();
+//        AddSignatureAreaRequire addSignatureAreaRequire = new AddSignatureAreaRequire();
+//        for (int i = 0 ; i < number ; i++) {
+//            JSONObject result = jksCore.doJob(addSignatureArea, addSignatureAreaRequire);
+//            Assert.assertEquals("success", result.get("msg"));
+//        }
+//    }
 
     @Test
     public void testSignCertificateToPdf () {
