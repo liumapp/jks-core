@@ -62,16 +62,16 @@ public class JksCoreTest extends TestCase {
         JksCore jksCore = new JksCore();
         GenerateCertificate generateCertificate = new GenerateCertificate();
         GenerateCertificateRequire generateCertificateRequire = new GenerateCertificateRequire();
-        generateCertificateRequire.setAlias("second-cert");
-        generateCertificateRequire.setCertPassword("123123");
-        generateCertificateRequire.setCountry("CN");
-        generateCertificateRequire.setProvince("ZJ");
-        generateCertificateRequire.setCity("Hangzhou");
-        generateCertificateRequire.setKeystorePath(this.jksSavePath);
-        generateCertificateRequire.setKeystoreName("demo.ks");
-        generateCertificateRequire.setStorepass("123456");
-        generateCertificateRequire.setValidity(1);
-        generateCertificateRequire.setName("zhangsan");
+        generateCertificateRequire.setAlias("second-cert")
+                        .setCertPassword("123123")
+                        .setCountry("CN")
+                        .setProvince("ZJ")
+                        .setCity("Hangzhou")
+                        .setKeystorePath(this.jksSavePath)
+                        .setKeystoreName("demo.ks")
+                        .setStorepass("123456")
+                        .setValidity(1)
+                        .setName("zhangsan");
         JSONObject result = jksCore.doJob(generateCertificate, generateCertificateRequire);
         Assert.assertEquals("success", result.get("msg"));
     }

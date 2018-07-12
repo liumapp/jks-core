@@ -80,87 +80,93 @@ public class GenerateCertificateRequire extends JobData {
         this.country = country;
     }
 
-    public String getKeystoreName() {
-        return keystoreName;
-    }
-
-    public void setKeystoreName(String keystoreName) {
-        this.keystoreName = keystoreName;
-    }
-
-    public String getKeystorePath() {
-        return keystorePath;
-    }
-
-    public void setKeystorePath(String keystorePath) {
-        this.keystorePath = keystorePath;
-    }
-
-    public String getStorepass() {
-        return storepass;
-    }
-
-    public void setStorepass(String storepass) {
-        this.storepass = storepass;
-    }
-
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
-
-    public String getCertPassword() {
-        return certPassword;
-    }
-
-    public void setCertPassword(String certPassword) {
-        this.certPassword = certPassword;
-    }
-
-    public Integer getValidity() {
-        return validity;
-    }
-
-    public void setValidity(Integer validity) {
-        this.validity = validity;
-    }
-
-    public Integer getKeysize() {
-        return keysize;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public GenerateCertificateRequire setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getProvince() {
         return province;
     }
 
-    public void setProvince(String province) {
+    public GenerateCertificateRequire setProvince(String province) {
         this.province = province;
+        return this;
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public GenerateCertificateRequire setCity(String city) {
         this.city = city;
+        return this;
     }
 
     public String getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public GenerateCertificateRequire setCountry(String country) {
         this.country = country;
+        return this;
+    }
+
+    public String getKeystorePath() {
+        return keystorePath;
+    }
+
+    public GenerateCertificateRequire setKeystorePath(String keystorePath) {
+        this.keystorePath = keystorePath;
+        return this;
+    }
+
+    public String getKeystoreName() {
+        return keystoreName;
+    }
+
+    public GenerateCertificateRequire setKeystoreName(String keystoreName) {
+        this.keystoreName = keystoreName;
+        return this;
+    }
+
+    public String getStorepass() {
+        return storepass;
+    }
+
+    public GenerateCertificateRequire setStorepass(String storepass) {
+        this.storepass = storepass;
+        return this;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public GenerateCertificateRequire setAlias(String alias) {
+        this.alias = alias;
+        return this;
+    }
+
+    public String getCertPassword() {
+        return certPassword;
+    }
+
+    public GenerateCertificateRequire setCertPassword(String certPassword) {
+        this.certPassword = certPassword;
+        return this;
+    }
+
+    public Integer getValidity() {
+        return validity;
+    }
+
+    public GenerateCertificateRequire setValidity(Integer validity) {
+        this.validity = validity;
+        return this;
     }
 }
