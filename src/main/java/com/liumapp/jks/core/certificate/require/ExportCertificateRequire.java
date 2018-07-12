@@ -35,51 +35,57 @@ public class ExportCertificateRequire extends JobData {
         this.certName = certName;
     }
 
+    public String getKeystorePath() {
+        return keystorePath;
+    }
+
+    public ExportCertificateRequire setKeystorePath(String keystorePath) {
+        this.keystorePath = keystorePath;
+        return this;
+    }
+
     public String getKeystoreName() {
         return keystoreName;
     }
 
-    public void setKeystoreName(String keystoreName) {
+    public ExportCertificateRequire setKeystoreName(String keystoreName) {
         this.keystoreName = keystoreName;
-    }
-
-    public String getCertName() {
-        return certName;
-    }
-
-    public void setCertName(String certName) {
-        this.certName = certName;
-    }
-
-    public String getCertSavePath() {
-        return certSavePath;
-    }
-
-    public void setCertSavePath(String certSavePath) {
-        this.certSavePath = certSavePath;
-    }
-
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias;
+        return this;
     }
 
     public String getKeystorePasswd() {
         return keystorePasswd;
     }
 
-    public void setKeystorePasswd(String keystorePasswd) {
+    public ExportCertificateRequire setKeystorePasswd(String keystorePasswd) {
         this.keystorePasswd = keystorePasswd;
+        return this;
     }
 
-    public String getKeystorePath() {
-        return keystorePath;
+    public String getAlias() {
+        return alias;
     }
 
-    public void setKeystorePath(String keystorePath) {
-        this.keystorePath = keystorePath;
+    public ExportCertificateRequire setAlias(String alias) {
+        this.alias = alias;
+        return this;
+    }
+
+    public String getCertSavePath() {
+        return certSavePath;
+    }
+
+    public ExportCertificateRequire setCertSavePath(String certSavePath) {
+        this.certSavePath = certSavePath;
+        return this;
+    }
+
+    public String getCertName() {
+        return certName;
+    }
+
+    public ExportCertificateRequire setCertName(String certName) {
+        this.certName = certName;
+        return this;
     }
 }

@@ -81,12 +81,12 @@ public class JksCoreTest extends TestCase {
         JksCore jksCore = new JksCore();
         ExportCertificate exportCertificate = new ExportCertificate();
         ExportCertificateRequire exportCertificateRequire = new ExportCertificateRequire();
-        exportCertificateRequire.setAlias("first-cert");
-        exportCertificateRequire.setCertSavePath(this.jksSavePath);
-        exportCertificateRequire.setCertName("first-cert.cer");
-        exportCertificateRequire.setKeystorePath(this.jksSavePath);
-        exportCertificateRequire.setKeystoreName("demo.ks");
-        exportCertificateRequire.setKeystorePasswd("123456");
+        exportCertificateRequire.setAlias("first-cert")
+                        .setCertSavePath(this.jksSavePath)
+                        .setCertName("first-cert.cer")
+                        .setKeystorePath(this.jksSavePath)
+                        .setKeystoreName("demo.ks")
+                        .setKeystorePasswd("123456");
         JSONObject result = jksCore.doJob(exportCertificate, exportCertificateRequire);
         Assert.assertEquals("success", result.get("msg"));
     }
