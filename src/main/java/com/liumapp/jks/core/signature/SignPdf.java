@@ -1,7 +1,11 @@
 package com.liumapp.jks.core.signature;
 
 import com.alibaba.fastjson.JSONObject;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfSignatureAppearance;
 import com.itextpdf.text.pdf.PdfStamper;
 import com.liumapp.jks.core.filter.RequestFilter;
 import com.liumapp.jks.core.signature.require.SignPdfRequire;
@@ -26,10 +30,15 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
     public JSONObject handle(SignPdfRequire data) {
         this.loggerRequest(data);
         String tmpFile = this.getTmpFile(data.getPdfSavePath(), data.getPdfFileName());
+        String resultFile = data.getResultSavePath() + "/" + data.getResultSaveName();
         try {
             data.initSecurityInfo();
             PdfReader pdfReader = new PdfReader(tmpFile);
-            PdfStamper stamper = this.buildingStamper();
+            PdfStamper stamper = this.buildingStamper(pdfReader, resultFile, data.getPdfSavePath());
+            PdfSignatureAppearance appearance = buildingAppearance(stamper, data.getReason(),
+                    data.getLocation(), data.getFirstX(), data.getFirstY(),
+                    data.getSecondX(), data.getSecondY(),
+                    data.getPageNum(), resultFile);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -41,13 +50,39 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
         return null;
     }
 
-    private PdfStamper buildingStamper (PdfReader pdfReader, String handlFile) {
+    private PdfSignatureAppearance buildingAppearance (PdfStamper stamper,
+                                                       String reason,
+                                                       String location,
+                                                       float firstX, float firstY,
+                                                       float secondX, float secondY,
+                                                       Integer pageNum, String resultFile) {
+        PdfSignatureAppearance appearance = stamper.getSignatureAppearance();
+        appearance.setReason(reason);
+        appearance.setLocation(location);
+        //设置签名的位置，页码，签名域名称，多次追加签名的时候，签名域名称不能一样
+        //签名的位置，是图章相对于pdf页面的位置坐标，原点为pdf页面左下角
+        //四个参数的分别是，图章左下角x，图章左下角y，图章右上角x，图章右上角y
+        appearance.setVisibleSignature(new Rectangle(firstX,
+                        firstY , secondX, secondY),
+                pageNum, resultFile);
+        Image image = Image.getInstance(signInfo.getDownloadImagePath());
+        appearance.setSignatureGraphic(image);
+        appearance.setCertificationLevel(signInfo.getCertificationLevel());
+        //设置图章的显示方式，如下选择的是只显示图章（还有其他的模式，可以图章和签名描述一同显示）
+        appearance.setRenderingMode(signInfo.getRenderingMode());
+    }
+
+    private PdfStamper buildingStamper (PdfReader pdfReader, String resultFile, String savepath) {
         FileOutputStream os = null;
         PdfStamper stamper = null;
         try {
-            os = new FileOutputStream(new File(handlFile));
-            stamper = PdfStamper.createSignature()
+            os = new FileOutputStream(new File(resultFile));
+            stamper = PdfStamper.createSignature(pdfReader, os, '\0', null , true);
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
@@ -56,6 +91,7 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
                 e.printStackTrace();
             }
         }
+        return stamper;
     }
 
     private String getTmpFile (String savePath, String originalFileName) {
@@ -68,5 +104,7 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
         }
         return savePath + "/" + tmpName;
     }
+
+
 
 }

@@ -70,6 +70,8 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     private Integer pageNum;
 
+    private String signPicPath;
+
     private String signFieldName;
 
     private String digestAlgorithm = DigestAlgorithms.SHA256;
@@ -302,6 +304,15 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     public SignPdfRequire setCertPassword(char[] certPassword) {
         this.certPassword = certPassword;
+        return this;
+    }
+
+    public String getSignPicPath() {
+        return signPicPath;
+    }
+
+    public SignPdfRequire setSignPicPath(String signPicPath) {
+        this.signPicPath = signPicPath;
         return this;
     }
 }
