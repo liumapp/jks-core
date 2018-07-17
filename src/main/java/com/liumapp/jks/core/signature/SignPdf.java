@@ -1,6 +1,7 @@
 package com.liumapp.jks.core.signature;
 
 import com.alibaba.fastjson.JSONObject;
+import com.itextpdf.text.pdf.PdfReader;
 import com.liumapp.jks.core.filter.RequestFilter;
 import com.liumapp.jks.core.signature.require.SignPdfRequire;
 
@@ -18,7 +19,8 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
         this.loggerRequest(data);
         try {
             data.initSecurityInfo();
-
+            PdfReader pdfReader = new PdfReader(data.getPdfSavePath() + "/" + data.getPdfFileName());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
