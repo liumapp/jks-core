@@ -169,4 +169,8 @@ public class GenerateCertificateRequire extends JobData {
         this.validity = validity;
         return this;
     }
+
+    public Integer getKeysize() {
+        return keysize;
+    }
 }

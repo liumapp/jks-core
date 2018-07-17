@@ -64,4 +64,8 @@ public class JksLoadingRequire {
         this.ksPassword = ksPassword;
         return this;
     }
+
+    public String getKsType() {
+        return ksType;
+    }
 }
