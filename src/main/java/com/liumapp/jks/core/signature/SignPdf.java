@@ -10,6 +10,7 @@ import com.itextpdf.text.pdf.PdfSignatureAppearance;
 import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.security.*;
 import com.liumapp.jks.core.filter.RequestFilter;
+import com.liumapp.jks.core.loader.ChainLoader;
 import com.liumapp.jks.core.signature.require.SignPdfRequire;
 import com.liumapp.jks.core.util.FileManager;
 
@@ -17,6 +18,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.security.cert.Certificate;
 import java.util.Date;
 
 /**
@@ -40,23 +42,33 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
             PdfSignatureAppearance appearance = buildingAppearance(stamper, data.getReason(),
                     data.getLocation(), data.getFirstX(), data.getFirstY(),
                     data.getSecondX(), data.getSecondY(),
-                    data.getPageNum(), resultFile, data.getSignPicPath(), data.getCertificationLevel(),
+                    data.getPageNum(), data.getSignFieldName(), data.getSignPicPath(), data.getCertificationLevel(),
                     data.getRenderingMode());
-            ExternalSignature pks = new PrivateKeySignature(data.getActivePrivateKey(), data.getDigestAlgorithm(), "BC");
+            ExternalSignature pks = new PrivateKeySignature(data.getActivePrivateKey().getPrivateKey(), data.getDigestAlgorithm(), "BC");
             //摘要算法
             ExternalDigest digest = new BouncyCastleDigest();
             // 调用itext签名方法完成pdf签章
-            MakeSignature.signDetached(appearance, digest, pks, data.getActiveCertificates(),
+            MakeSignature.signDetached(appearance, digest, pks, this.buildingChain(data.getActiveCertificates()),
                     null, null, null, 0, data.getSigtype());
+            this.jobResult.put("msg", "success");
         } catch (Exception e) {
             e.printStackTrace();
+            this.jobResult.put("msg", "error");
         } finally {
             File tmp = new File(tmpFile);
             if (tmp.exists()) {
                 tmp.delete();
             }
         }
-        return null;
+        return this.jobResult;
+    }
+
+    private Certificate[] buildingChain (ChainLoader.ActiveCertificate[] activeChain) {
+        Certificate[] results = new Certificate[activeChain.length];
+        for (int i = 0 ; i < activeChain.length ; i++) {
+            results[i] = activeChain[i].getCertificate();
+        }
+        return results;
     }
 
     private PdfSignatureAppearance buildingAppearance (PdfStamper stamper,
@@ -64,7 +76,7 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
                                                        String location,
                                                        float firstX, float firstY,
                                                        float secondX, float secondY,
-                                                       Integer pageNum, String resultFile,
+                                                       Integer pageNum, String fieldName,
                                                        String picPath, Integer certificateLevel,
                                                        PdfSignatureAppearance.RenderingMode renderingMode) {
         PdfSignatureAppearance appearance = stamper.getSignatureAppearance();
@@ -75,9 +87,9 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
             //设置签名的位置，页码，签名域名称，多次追加签名的时候，签名域名称不能一样
             //签名的位置，是图章相对于pdf页面的位置坐标，原点为pdf页面左下角
             //四个参数的分别是，图章左下角x，图章左下角y，图章右上角x，图章右上角y
-            appearance.setVisibleSignature(new Rectangle(firstX,
-                            firstY , secondX, secondY),
-                    pageNum, resultFile);
+            appearance.setVisibleSignature(new Rectangle(Math.round(firstX),
+                            Math.round(firstY) , Math.round(secondX), Math.round(secondY)),
+                    pageNum, fieldName);
             image = Image.getInstance(picPath);
             appearance.setSignatureGraphic(image);
             appearance.setCertificationLevel(certificateLevel);
@@ -103,12 +115,6 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
         return stamper;
     }

@@ -132,7 +132,7 @@ public class JksCoreTest extends TestCase {
 //    }
 
     @Test
-    public void testSignCertificateToPdf () {
+    public void testSignFirstCertificateToPdf () {
         JksCore jksCore = new JksCore();
         SignPdf signPdf = new SignPdf();
         SignPdfRequire signPdfRequire = new SignPdfRequire();
@@ -152,7 +152,35 @@ public class JksCoreTest extends TestCase {
                 .setSecondX(100)
                 .setSecondY(100)
                 .setPageNum(1)
-                .setSignPicPath(this.jksSavePath + "/" + "myself.jpg");
+                .setSignFieldName("firstSignatureArea")
+                .setSignPicPath(this.jksSavePath + "/" + "me.jpg");
+        JSONObject result = jksCore.doJob(signPdf, signPdfRequire);
+        Assert.assertEquals("success", result.get("msg"));
+    }
+
+    @Test
+    public void testSignSecondCertificateToPdf () {
+        JksCore jksCore = new JksCore();
+        SignPdf signPdf = new SignPdf();
+        SignPdfRequire signPdfRequire = new SignPdfRequire();
+        signPdfRequire.setKsPath(this.jksSavePath)
+                .setKsName("demo.ks")
+                .setKsPassword("123456".toCharArray())
+                .setCertAlias("second-cert")
+                .setCertPassword("123123".toCharArray())
+                .setPdfSavePath(this.jksSavePath)
+                .setPdfFileName("test_with_signed.pdf")
+                .setResultSavePath(this.jksSavePath)
+                .setResultSaveName("test_with_signed_2.pdf")
+                .setReason("this is reason")
+                .setLocation("this is location")
+                .setFirstX(300)
+                .setFirstY(300)
+                .setSecondX(350)
+                .setSecondY(350)
+                .setPageNum(1)
+                .setSignFieldName("secondSignatureArea")
+                .setSignPicPath(this.jksSavePath + "/" + "girl.jpg");
         JSONObject result = jksCore.doJob(signPdf, signPdfRequire);
         Assert.assertEquals("success", result.get("msg"));
     }

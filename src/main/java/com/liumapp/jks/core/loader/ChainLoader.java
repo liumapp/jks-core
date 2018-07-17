@@ -39,7 +39,8 @@ public class ChainLoader {
         Certificate[] chain = require.getActiveKeyStore().getKeyStore().getCertificateChain(require.getAlias());
         ActiveCertificate[] results = new ActiveCertificate[chain.length];
         for (int i = 0 ; i < chain.length ; i++) {
-            results[i].certificate = chain[i];
+            results[i] = new ActiveCertificate();
+            results[i].setCertificate(chain[i]);
         }
         return results;
     }
