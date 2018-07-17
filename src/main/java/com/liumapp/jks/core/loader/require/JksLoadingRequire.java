@@ -51,8 +51,9 @@ public class JksLoadingRequire {
         return ksPath;
     }
 
-    public void setKsPath(String ksPath) {
+    public JksLoadingRequire setKsPath(String ksPath) {
         this.ksPath = ksPath;
+        return this;
     }
 
     public char[] getKsPassword() {

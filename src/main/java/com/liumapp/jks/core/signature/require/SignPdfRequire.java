@@ -38,6 +38,12 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     private PrivateKeyLoader.ActivePrivateKey activePrivateKey;
 
+    private String ksPath;
+
+    private String ksName;
+
+    private char[] ksPassword;
+
     private String pdfSavePath;
 
     private String pdfFileName;
@@ -70,9 +76,17 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
     }
 
     public void initSecurityInfo () throws KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException {
-        this.activeKeyStore = this.buildActiveKeyStore(this.getJksLoadingRequire());
+        this.setJksLoadingRequire();
+        this.activeKeyStore = this.buildActiveKeyStore(this.jksLoadingRequire);
         this.activeCertificates = this.buildActiveChain(this.getChainLoadingRequire(this.activeKeyStore));
         this.activePrivateKey = this.buildActivePrivateKey(this.getPrivateKeyLoadingRequire());
+    }
+
+    protected void setJksLoadingRequire() {
+        this.jksLoadingRequire = new JksLoadingRequire();
+        this.jksLoadingRequire.setKsPath(this.ksPath)
+                .setKsName(this.ksName)
+                .setKsPassword(this.ksPassword);
     }
 
     @Override
@@ -115,10 +129,6 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     public JksLoadingRequire getJksLoadingRequire() {
         return jksLoadingRequire;
-    }
-
-    public void setJksLoadingRequire(JksLoadingRequire jksLoadingRequire) {
-        this.jksLoadingRequire = jksLoadingRequire;
     }
 
     public MakeSignature.CryptoStandard getSigtype() {
@@ -234,6 +244,33 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     public SignPdfRequire setSignFieldName(String signFieldName) {
         this.signFieldName = signFieldName;
+        return this;
+    }
+
+    public String getKsPath() {
+        return ksPath;
+    }
+
+    public SignPdfRequire setKsPath(String ksPath) {
+        this.ksPath = ksPath;
+        return this;
+    }
+
+    public String getKsName() {
+        return ksName;
+    }
+
+    public SignPdfRequire setKsName(String ksName) {
+        this.ksName = ksName;
+        return this;
+    }
+
+    public char[] getKsPassword() {
+        return ksPassword;
+    }
+
+    public SignPdfRequire setKsPassword(char[] ksPassword) {
+        this.ksPassword = ksPassword;
         return this;
     }
 }

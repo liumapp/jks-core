@@ -140,7 +140,10 @@ public class JksCoreTest extends TestCase {
         JksCore jksCore = new JksCore();
         SignPdf signPdf = new SignPdf();
         SignPdfRequire signPdfRequire = new SignPdfRequire();
-        signPdfRequire.setJksLoadingRequire(new JksLoadingRequire());
+        signPdfRequire.setKsPath(this.jksSavePath)
+                .setKsName("demo.ks")
+                .setKsPassword("123456".toCharArray())
+
     }
 
 }
