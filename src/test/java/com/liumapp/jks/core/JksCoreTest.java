@@ -7,6 +7,7 @@ import com.liumapp.jks.core.certificate.require.ExportCertificateRequire;
 import com.liumapp.jks.core.certificate.require.GenerateCertificateRequire;
 import com.liumapp.jks.core.container.GenerateJksContainer;
 import com.liumapp.jks.core.container.require.GenerateJksContainerRequire;
+import com.liumapp.jks.core.loader.require.JksLoadingRequire;
 import com.liumapp.jks.core.signature.AddSignatureArea;
 import com.liumapp.jks.core.signature.SignPdf;
 import com.liumapp.jks.core.signature.require.AddSignatureAreaRequire;
@@ -139,7 +140,7 @@ public class JksCoreTest extends TestCase {
         JksCore jksCore = new JksCore();
         SignPdf signPdf = new SignPdf();
         SignPdfRequire signPdfRequire = new SignPdfRequire();
-
+        signPdfRequire.setJksLoadingRequire(new JksLoadingRequire());
     }
 
 }

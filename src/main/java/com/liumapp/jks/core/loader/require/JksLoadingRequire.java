@@ -34,20 +34,17 @@ public class JksLoadingRequire {
         this.ksPassword = ksPassword;
     }
 
-    public String getKsName() {
-        return ksName;
-    }
-
     public Integer getPosition() {
         return position;
     }
 
-    public void setKsName(String ksName) {
-        this.ksName = ksName;
+    public String getKsName() {
+        return ksName;
     }
 
-    public String getKsType() {
-        return ksType;
+    public JksLoadingRequire setKsName(String ksName) {
+        this.ksName = ksName;
+        return this;
     }
 
     public String getKsPath() {
@@ -62,7 +59,8 @@ public class JksLoadingRequire {
         return ksPassword;
     }
 
-    public void setKsPassword(char[] ksPassword) {
+    public JksLoadingRequire setKsPassword(char[] ksPassword) {
         this.ksPassword = ksPassword;
+        return this;
     }
 }
