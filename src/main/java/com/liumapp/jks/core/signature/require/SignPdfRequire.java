@@ -46,6 +46,8 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     private String certAlias;
 
+    private char[] certPassword;
+
     private String pdfSavePath;
 
     private String pdfFileName;
@@ -100,6 +102,8 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     protected void setPrivateKeyLoadingRequire() {
         this.privateKeyLoadingRequire = new PrivateKeyLoadingRequire();
+        this.privateKeyLoadingRequire.setAlias(this.certAlias)
+                .setCertPassword(this.certPassword);
     }
 
     @Override
@@ -289,6 +293,15 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     public SignPdfRequire setCertAlias(String certAlias) {
         this.certAlias = certAlias;
+        return this;
+    }
+
+    public char[] getCertPassword() {
+        return certPassword;
+    }
+
+    public SignPdfRequire setCertPassword(char[] certPassword) {
+        this.certPassword = certPassword;
         return this;
     }
 }
