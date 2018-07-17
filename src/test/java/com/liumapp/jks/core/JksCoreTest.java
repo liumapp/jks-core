@@ -147,7 +147,8 @@ public class JksCoreTest extends TestCase {
                 .setFirstY(50)
                 .setSecondX(100)
                 .setSecondY(100)
-                .setPageNum(1);
+                .setPageNum(1)
+                .setSignPicPath(this.jksSavePath + "/" + "myself.jpg");
         JSONObject result = jksCore.doJob(signPdf, signPdfRequire);
         Assert.assertEquals("success", result.get("msg"));
     }
