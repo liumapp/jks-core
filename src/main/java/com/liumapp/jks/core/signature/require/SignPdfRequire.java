@@ -80,6 +80,7 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
     public void initSecurityInfo () throws KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException {
         this.setJksLoadingRequire();
         this.setChainLoadingRequire();
+        this.setPrivateKeyLoadingRequire();
         this.activeKeyStore = this.buildActiveKeyStore(this.jksLoadingRequire);
         this.activeCertificates = this.buildActiveChain(this.getChainLoadingRequire(this.activeKeyStore));
         this.activePrivateKey = this.buildActivePrivateKey(this.getPrivateKeyLoadingRequire());
@@ -95,6 +96,10 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
     protected void setChainLoadingRequire() {
         this.chainLoadingRequire = new ChainLoadingRequire();
         this.chainLoadingRequire.setAlias(this.certAlias);
+    }
+
+    protected void setPrivateKeyLoadingRequire() {
+        this.privateKeyLoadingRequire = new PrivateKeyLoadingRequire();
     }
 
     @Override
@@ -120,10 +125,6 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     public PrivateKeyLoadingRequire getPrivateKeyLoadingRequire() {
         return privateKeyLoadingRequire;
-    }
-
-    public void setPrivateKeyLoadingRequire(PrivateKeyLoadingRequire privateKeyLoadingRequire) {
-        this.privateKeyLoadingRequire = privateKeyLoadingRequire;
     }
 
     /**

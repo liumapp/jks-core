@@ -20,20 +20,22 @@ public class PrivateKeyLoadingRequire {
     public PrivateKeyLoadingRequire() {
     }
 
-    public char[] getCertPassword() {
-        return certPassword;
-    }
-
-    public void setCertPassword(char[] certPassword) {
-        this.certPassword = certPassword;
-    }
-
     public String getAlias() {
         return alias;
     }
 
-    public void setAlias(String alias) {
+    public PrivateKeyLoadingRequire setAlias(String alias) {
         this.alias = alias;
+        return this;
+    }
+
+    public char[] getCertPassword() {
+        return certPassword;
+    }
+
+    public PrivateKeyLoadingRequire setCertPassword(char[] certPassword) {
+        this.certPassword = certPassword;
+        return this;
     }
 
     public JksLoader.ActiveKeyStore getActiveKeyStore() {
