@@ -27,4 +27,9 @@ public class FileManager {
         out.close();
     }
 
+    public String generateRandomFileName () {
+        long rand = System.currentTimeMillis() + (int)Math.random() * 10000;
+        return Long.toString(rand);
+    }
+
 }

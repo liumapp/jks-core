@@ -7,14 +7,10 @@ import com.liumapp.jks.core.certificate.require.ExportCertificateRequire;
 import com.liumapp.jks.core.certificate.require.GenerateCertificateRequire;
 import com.liumapp.jks.core.container.GenerateJksContainer;
 import com.liumapp.jks.core.container.require.GenerateJksContainerRequire;
-import com.liumapp.jks.core.loader.require.JksLoadingRequire;
-import com.liumapp.jks.core.signature.AddSignatureArea;
 import com.liumapp.jks.core.signature.SignPdf;
-import com.liumapp.jks.core.signature.require.AddSignatureAreaRequire;
 import com.liumapp.jks.core.signature.require.SignPdfRequire;
 import junit.framework.Assert;
 import junit.framework.TestCase;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
