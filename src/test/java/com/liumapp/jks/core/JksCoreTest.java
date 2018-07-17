@@ -143,7 +143,9 @@ public class JksCoreTest extends TestCase {
         signPdfRequire.setKsPath(this.jksSavePath)
                 .setKsName("demo.ks")
                 .setKsPassword("123456".toCharArray())
-
+                .setCertAlias("first-cert");
+        JSONObject result = jksCore.doJob(signPdf, signPdfRequire);
+        Assert.assertEquals("success", result.get("msg"));
     }
 
 }
