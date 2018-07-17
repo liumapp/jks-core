@@ -24,12 +24,25 @@ public class PrivateKeyLoader {
         return privateKeyLoader;
     }
 
-    public abstract class ActivePrivateKey implements PrivateKey {
+    public class ActivePrivateKey {
 
+        private PrivateKey privateKey;
+
+        public PrivateKey getPrivateKey() {
+            return privateKey;
+        }
+
+        public ActivePrivateKey setPrivateKey(PrivateKey privateKey) {
+            this.privateKey = privateKey;
+            return this;
+        }
     }
 
     public ActivePrivateKey getActivePrivateKey () throws UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException {
-        return (ActivePrivateKey) require.getActiveKeyStore().getKey(require.getAlias(), require.getCertPassword());
+        ActivePrivateKey activePrivateKey = new ActivePrivateKey();
+        PrivateKey privateKey = (PrivateKey) require.getActiveKeyStore().getKeyStore().getKey(require.getAlias(), require.getCertPassword());
+        activePrivateKey.privateKey = privateKey;
+        return activePrivateKey;
     }
 
 }

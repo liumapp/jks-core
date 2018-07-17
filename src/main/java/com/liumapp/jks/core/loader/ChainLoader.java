@@ -22,24 +22,26 @@ public class ChainLoader {
         return chainLoader;
     }
 
-    public abstract class ActiveCertificate extends Certificate {
+    public class ActiveCertificate {
+        private Certificate certificate;
 
-        /**
-         * Creates a certificate of the specified type.
-         *
-         * @param type the standard name of the certificate type.
-         *             See the CertificateFactory section in the <a href=
-         *             "{@docRoot}/../technotes/guides/security/StandardNames.html#CertificateFactory">
-         *             Java Cryptography Architecture Standard Algorithm Name Documentation</a>
-         *             for information about standard certificate types.
-         */
-        protected ActiveCertificate(String type) {
-            super(type);
+        public Certificate getCertificate() {
+            return certificate;
+        }
+
+        public ActiveCertificate setCertificate(Certificate certificate) {
+            this.certificate = certificate;
+            return this;
         }
     }
 
     public ActiveCertificate[] getActiveCertificateChain () throws KeyStoreException {
-        return (ActiveCertificate[]) require.getActiveKeyStore().getCertificateChain(require.getAlias());
+        Certificate[] chain = require.getActiveKeyStore().getKeyStore().getCertificateChain(require.getAlias());
+        ActiveCertificate[] results = new ActiveCertificate[chain.length];
+        for (int i = 0 ; i < chain.length ; i++) {
+            results[i].certificate = chain[i];
+        }
+        return results;
     }
 
 }
