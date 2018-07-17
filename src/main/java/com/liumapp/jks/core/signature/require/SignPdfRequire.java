@@ -69,8 +69,6 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
     public SignPdfRequire() {
     }
 
-
-
     public void initSecurityInfo () throws KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException {
         this.activeKeyStore = this.buildActiveKeyStore(this.getJksLoadingRequire());
         this.activeCertificates = this.buildActiveChain(this.getChainLoadingRequire(this.activeKeyStore));
@@ -97,7 +95,6 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
                .getInstance(this.getPrivateKeyLoadingRequire())
                .getActivePrivateKey();
     }
-
 
 
     public PrivateKeyLoadingRequire getPrivateKeyLoadingRequire() {
@@ -137,96 +134,107 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
         return pdfSavePath;
     }
 
-    public void setPdfSavePath(String pdfSavePath) {
+    public SignPdfRequire setPdfSavePath(String pdfSavePath) {
         this.pdfSavePath = pdfSavePath;
+        return this;
     }
 
     public String getPdfFileName() {
         return pdfFileName;
     }
 
-    public void setPdfFileName(String pdfFileName) {
+    public SignPdfRequire setPdfFileName(String pdfFileName) {
         this.pdfFileName = pdfFileName;
+        return this;
     }
 
     public String getResultSavePath() {
         return resultSavePath;
     }
 
-    public void setResultSavePath(String resultSavePath) {
+    public SignPdfRequire setResultSavePath(String resultSavePath) {
         this.resultSavePath = resultSavePath;
+        return this;
     }
 
     public String getResultSaveName() {
         return resultSaveName;
     }
 
-    public void setResultSaveName(String resultSaveName) {
+    public SignPdfRequire setResultSaveName(String resultSaveName) {
         this.resultSaveName = resultSaveName;
+        return this;
     }
 
     public String getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public SignPdfRequire setReason(String reason) {
         this.reason = reason;
+        return this;
     }
 
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public SignPdfRequire setLocation(String location) {
         this.location = location;
+        return this;
     }
 
     public float getFirstX() {
         return firstX;
     }
 
-    public void setFirstX(float firstX) {
+    public SignPdfRequire setFirstX(float firstX) {
         this.firstX = firstX;
+        return this;
     }
 
     public float getFirstY() {
         return firstY;
     }
 
-    public void setFirstY(float firstY) {
+    public SignPdfRequire setFirstY(float firstY) {
         this.firstY = firstY;
+        return this;
     }
 
     public float getSecondX() {
         return secondX;
     }
 
-    public void setSecondX(float secondX) {
+    public SignPdfRequire setSecondX(float secondX) {
         this.secondX = secondX;
+        return this;
     }
 
     public float getSecondY() {
         return secondY;
     }
 
-    public void setSecondY(float secondY) {
+    public SignPdfRequire setSecondY(float secondY) {
         this.secondY = secondY;
+        return this;
     }
 
     public Integer getPageNum() {
         return pageNum;
     }
 
-    public void setPageNum(Integer pageNum) {
+    public SignPdfRequire setPageNum(Integer pageNum) {
         this.pageNum = pageNum;
+        return this;
     }
 
     public String getSignFieldName() {
         return signFieldName;
     }
 
-    public void setSignFieldName(String signFieldName) {
+    public SignPdfRequire setSignFieldName(String signFieldName) {
         this.signFieldName = signFieldName;
+        return this;
     }
-
 }
