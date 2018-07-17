@@ -79,6 +79,7 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     public void initSecurityInfo () throws KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException {
         this.setJksLoadingRequire();
+        this.setChainLoadingRequire();
         this.activeKeyStore = this.buildActiveKeyStore(this.jksLoadingRequire);
         this.activeCertificates = this.buildActiveChain(this.getChainLoadingRequire(this.activeKeyStore));
         this.activePrivateKey = this.buildActivePrivateKey(this.getPrivateKeyLoadingRequire());
@@ -89,6 +90,11 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
         this.jksLoadingRequire.setKsPath(this.ksPath)
                 .setKsName(this.ksName)
                 .setKsPassword(this.ksPassword);
+    }
+
+    protected void setChainLoadingRequire() {
+        this.chainLoadingRequire = new ChainLoadingRequire();
+        this.chainLoadingRequire.setAlias(this.certAlias);
     }
 
     @Override
@@ -120,13 +126,13 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
         this.privateKeyLoadingRequire = privateKeyLoadingRequire;
     }
 
+    /**
+     * 从激活的jks中获取证书链
+     * 证书、证书链是存放于jks中，所以您必须提供jks才能获取证书链
+     */
     public ChainLoadingRequire getChainLoadingRequire(JksLoader.ActiveKeyStore activeKeyStore) {
         chainLoadingRequire.setActiveKeyStore(activeKeyStore);
         return chainLoadingRequire;
-    }
-
-    public void setChainLoadingRequire(ChainLoadingRequire chainLoadingRequire) {
-        this.chainLoadingRequire = chainLoadingRequire;
     }
 
     public JksLoadingRequire getJksLoadingRequire() {
