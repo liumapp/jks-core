@@ -1,5 +1,6 @@
 package com.liumapp.jks.core.signature.require;
 
+import com.itextpdf.text.pdf.PdfSignatureAppearance;
 import com.itextpdf.text.pdf.security.DigestAlgorithms;
 import com.itextpdf.text.pdf.security.MakeSignature;
 import com.liumapp.jks.core.job.JobData;
@@ -76,7 +77,11 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
 
     private String digestAlgorithm = DigestAlgorithms.SHA256;
 
+    private Integer certificationLevel = 0;
+
     private MakeSignature.CryptoStandard sigtype = MakeSignature.CryptoStandard.CMS;
+
+    private PdfSignatureAppearance.RenderingMode renderingMode = PdfSignatureAppearance.RenderingMode.GRAPHIC;
 
     public SignPdfRequire() {
     }
@@ -314,5 +319,25 @@ public class SignPdfRequire extends JobData implements ActiveChainService, Activ
     public SignPdfRequire setSignPicPath(String signPicPath) {
         this.signPicPath = signPicPath;
         return this;
+    }
+
+    public Integer getCertificationLevel() {
+        return certificationLevel;
+    }
+
+    public PdfSignatureAppearance.RenderingMode getRenderingMode() {
+        return renderingMode;
+    }
+
+    public JksLoader.ActiveKeyStore getActiveKeyStore() {
+        return activeKeyStore;
+    }
+
+    public ChainLoader.ActiveCertificate[] getActiveCertificates() {
+        return activeCertificates;
+    }
+
+    public PrivateKeyLoader.ActivePrivateKey getActivePrivateKey() {
+        return activePrivateKey;
     }
 }

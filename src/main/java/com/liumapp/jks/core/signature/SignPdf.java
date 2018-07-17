@@ -1,12 +1,14 @@
 package com.liumapp.jks.core.signature;
 
 import com.alibaba.fastjson.JSONObject;
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfSignatureAppearance;
 import com.itextpdf.text.pdf.PdfStamper;
+import com.itextpdf.text.pdf.security.*;
 import com.liumapp.jks.core.filter.RequestFilter;
 import com.liumapp.jks.core.signature.require.SignPdfRequire;
 import com.liumapp.jks.core.util.FileManager;
@@ -38,7 +40,14 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
             PdfSignatureAppearance appearance = buildingAppearance(stamper, data.getReason(),
                     data.getLocation(), data.getFirstX(), data.getFirstY(),
                     data.getSecondX(), data.getSecondY(),
-                    data.getPageNum(), resultFile);
+                    data.getPageNum(), resultFile, data.getSignPicPath(), data.getCertificationLevel(),
+                    data.getRenderingMode());
+            ExternalSignature pks = new PrivateKeySignature(data.getActivePrivateKey(), data.getDigestAlgorithm(), "BC");
+            //摘要算法
+            ExternalDigest digest = new BouncyCastleDigest();
+            // 调用itext签名方法完成pdf签章
+            MakeSignature.signDetached(appearance, digest, pks, data.getActiveCertificates(),
+                    null, null, null, 0, data.getSigtype());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -55,21 +64,31 @@ public class SignPdf extends RequestFilter<SignPdfRequire> {
                                                        String location,
                                                        float firstX, float firstY,
                                                        float secondX, float secondY,
-                                                       Integer pageNum, String resultFile) {
+                                                       Integer pageNum, String resultFile,
+                                                       String picPath, Integer certificateLevel,
+                                                       PdfSignatureAppearance.RenderingMode renderingMode) {
         PdfSignatureAppearance appearance = stamper.getSignatureAppearance();
-        appearance.setReason(reason);
-        appearance.setLocation(location);
-        //设置签名的位置，页码，签名域名称，多次追加签名的时候，签名域名称不能一样
-        //签名的位置，是图章相对于pdf页面的位置坐标，原点为pdf页面左下角
-        //四个参数的分别是，图章左下角x，图章左下角y，图章右上角x，图章右上角y
-        appearance.setVisibleSignature(new Rectangle(firstX,
-                        firstY , secondX, secondY),
-                pageNum, resultFile);
-        Image image = Image.getInstance(signInfo.getDownloadImagePath());
-        appearance.setSignatureGraphic(image);
-        appearance.setCertificationLevel(signInfo.getCertificationLevel());
-        //设置图章的显示方式，如下选择的是只显示图章（还有其他的模式，可以图章和签名描述一同显示）
-        appearance.setRenderingMode(signInfo.getRenderingMode());
+        Image image = null;
+        try {
+            appearance.setReason(reason);
+            appearance.setLocation(location);
+            //设置签名的位置，页码，签名域名称，多次追加签名的时候，签名域名称不能一样
+            //签名的位置，是图章相对于pdf页面的位置坐标，原点为pdf页面左下角
+            //四个参数的分别是，图章左下角x，图章左下角y，图章右上角x，图章右上角y
+            appearance.setVisibleSignature(new Rectangle(firstX,
+                            firstY , secondX, secondY),
+                    pageNum, resultFile);
+            image = Image.getInstance(picPath);
+            appearance.setSignatureGraphic(image);
+            appearance.setCertificationLevel(certificateLevel);
+            //设置图章的显示方式，如下选择的是只显示图章（还有其他的模式，可以图章和签名描述一同显示）
+            appearance.setRenderingMode(renderingMode);
+        } catch (BadElementException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return appearance;
     }
 
     private PdfStamper buildingStamper (PdfReader pdfReader, String resultFile, String savepath) {
