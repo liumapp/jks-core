@@ -66,11 +66,11 @@ public class JksCoreTest extends TestCase {
                         .setCountry("CN")
                         .setProvince("ZJ")
                         .setCity("Hangzhou")
+                        .setName("zhangsan")
                         .setKeystorePath(this.jksSavePath)
                         .setKeystoreName("demo.ks")
                         .setStorepass("123456")
-                        .setValidity(1)
-                        .setName("zhangsan");
+                        .setValidity(1);
         JSONObject result = jksCore.doJob(generateCertificate, generateCertificateRequire);
         Assert.assertEquals("success", result.get("msg"));
     }
