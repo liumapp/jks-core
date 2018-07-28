@@ -85,7 +85,7 @@
   <distributionManagement>
     <repository>
       <id>liumapp</id>
-      <url>http://127.0.0.1:8081/repository/liumapp/</url>
+      <url>http://www.liumapp.com:8081/repository/liumapp/</url>
     </repository>
   </distributionManagement>
 
@@ -98,6 +98,8 @@
         <configuration>
           <fork>true</fork>
           <compilerArgument>-XDignore.symbol.file</compilerArgument>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
       <!--发布代码Jar插件-->
