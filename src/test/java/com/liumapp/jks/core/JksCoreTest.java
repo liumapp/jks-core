@@ -76,6 +76,11 @@ public class JksCoreTest extends TestCase {
     }
 
     @Test
+    public void testRequireCACertificate () {
+        // todo
+    }
+
+    @Test
     public void testExportCertificate () {
         JksCore jksCore = new JksCore();
         ExportCertificate exportCertificate = new ExportCertificate();
