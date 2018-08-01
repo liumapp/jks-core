@@ -14,6 +14,8 @@ import java.security.Security;
  */
 public class CACertificateRequire extends JobData {
 
+    private static final String encryKey = "9ba76bfd500642328ec03ad8ef1b6e75";
+
     private String host;
 
     private String path;
@@ -39,7 +41,7 @@ public class CACertificateRequire extends JobData {
     }
 
     public String getAppCode () throws Exception {
-        EncryptUtil encryptUtil = new EncryptUtil("9ba76bfd500642328ec03ad8ef1b6e75", "utf-8");
+        EncryptUtil encryptUtil = new EncryptUtil(CACertificateRequire.encryKey, "utf-8");
         String result = "";
         result += "id_";
         result += encryptUtil.encode(this.appId);
@@ -101,5 +103,6 @@ public class CACertificateRequire extends JobData {
         this.identityCode = identityCode;
         return this;
     }
+
 }
 

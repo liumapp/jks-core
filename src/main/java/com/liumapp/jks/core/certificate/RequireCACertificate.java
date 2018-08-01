@@ -28,7 +28,8 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
         Map<String, String> headers = new HashMap<String, String>();
         Map<String, String> querys = new HashMap<String, String>();
         JSONObject object = new JSONObject();
-
+        object.put("name", data.getName());
+        object.put("identityCode", data.getIdentityCode());
         String bodys = object.toJSONString();
         try {
             headers.put("Authorization", data.getAppCode());
