@@ -28,16 +28,21 @@ public class CACertificateRequire extends JobData {
 
     private String identityCode;
 
+    private String certPassword;
+
+
+
     public CACertificateRequire () {
     }
 
-    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String identityCode) {
+    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String identityCode, String certPassword) {
         this.host = host;
         this.path = path;
         this.appId = appId;
         this.appSecret = appSecret;
         this.name = name;
         this.identityCode = identityCode;
+        this.certPassword = certPassword;
     }
 
     public String getAppCode () throws Exception {
@@ -104,5 +109,13 @@ public class CACertificateRequire extends JobData {
         return this;
     }
 
+    public String getCertPassword() {
+        return certPassword;
+    }
+
+    public CACertificateRequire setCertPassword(String certPassword) {
+        this.certPassword = certPassword;
+        return this;
+    }
 }
 

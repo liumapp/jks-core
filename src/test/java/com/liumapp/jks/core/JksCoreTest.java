@@ -88,6 +88,7 @@ public class JksCoreTest extends TestCase {
                     .setHost("https://localhost:3030")
                     .setIdentityCode("user_identity_code")
                     .setName("wangwu")
+                    .setCertPassword("123123123")
                     .setPath("/cert/generate");
         JSONObject result = jksCore.doJob(requireCACertificate, caCertificateRequire);
         Assert.assertEquals("success", result.get("msg"));
