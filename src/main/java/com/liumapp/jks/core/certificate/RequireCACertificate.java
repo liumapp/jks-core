@@ -1,10 +1,12 @@
 package com.liumapp.jks.core.certificate;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.jks.core.certificate.require.CACertificateRequire;
 import com.liumapp.jks.core.filter.RequestFilter;
 import com.liumapp.jks.core.util.HttpUtil;
 import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,18 +30,22 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
         Map<String, String> headers = new HashMap<String, String>();
         Map<String, String> querys = new HashMap<String, String>();
         JSONObject object = new JSONObject();
-        object.put("name", data.getName());
-        object.put("identityCode", data.getIdentityCode());
-        String bodys = object.toJSONString();
         try {
-            headers.put("Authorization", data.getAppCode());
+            object.put("name", data.getName());
+            object.put("identityCode", data.getIdentityCode());
+            object.put("code", data.getAppCode());
+            String bodys = object.toJSONString();
+            headers.put("Content-Type", "application/json");
             HttpResponse response = httpUtil.doPost(data.getHost(),
                     data.getPath(),
                     "POST",
                     headers,
                     querys,
                     bodys);
+            String res = EntityUtils.toString(response.getEntity());
+            JSONObject res_obj = JSON.parseObject(res);
             this.jobResult.put("msg", "success");
+            this.jobResult.put("res", res_obj.toJSONString());
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             this.jobResult.put("msg", "error");

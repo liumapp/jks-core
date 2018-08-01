@@ -3,6 +3,8 @@ package com.liumapp.jks.core;
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.jks.core.certificate.ExportCertificate;
 import com.liumapp.jks.core.certificate.GenerateCertificate;
+import com.liumapp.jks.core.certificate.RequireCACertificate;
+import com.liumapp.jks.core.certificate.require.CACertificateRequire;
 import com.liumapp.jks.core.certificate.require.ExportCertificateRequire;
 import com.liumapp.jks.core.certificate.require.GenerateCertificateRequire;
 import com.liumapp.jks.core.container.GenerateJksContainer;
@@ -78,6 +80,17 @@ public class JksCoreTest extends TestCase {
     @Test
     public void testRequireCACertificate () {
         // todo
+        JksCore jksCore = new JksCore();
+        RequireCACertificate requireCACertificate = new RequireCACertificate();
+        CACertificateRequire caCertificateRequire = new CACertificateRequire();
+        caCertificateRequire.setAppId("your_app_id")
+                    .setAppSecret("your_app_secret")
+                    .setHost("http://localhost:3030")
+                    .setIdentityCode("user_identity_code")
+                    .setName("wangwu")
+                    .setPath("/cert/generate");
+        JSONObject result = jksCore.doJob(requireCACertificate, caCertificateRequire);
+        Assert.assertEquals("success", result.get("msg"));
     }
 
     @Test
