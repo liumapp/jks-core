@@ -30,12 +30,22 @@ public class CACertificateRequire extends JobData {
 
     private String certPassword;
 
+    private String keystorePath;
 
+    private String keystoreName;
+
+    private String storepass;
+
+    private String country;
+
+    private String province;
+
+    private String city;
 
     public CACertificateRequire () {
     }
 
-    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String identityCode, String certPassword) {
+    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String identityCode, String certPassword, String keystorePath, String keystoreName, String storepass, String country, String province, String city) {
         this.host = host;
         this.path = path;
         this.appId = appId;
@@ -43,6 +53,66 @@ public class CACertificateRequire extends JobData {
         this.name = name;
         this.identityCode = identityCode;
         this.certPassword = certPassword;
+        this.keystorePath = keystorePath;
+        this.keystoreName = keystoreName;
+        this.storepass = storepass;
+        this.country = country;
+        this.province = province;
+        this.city = city;
+    }
+
+    public String getKeystorePath() {
+        return keystorePath;
+    }
+
+    public CACertificateRequire setKeystorePath(String keystorePath) {
+        this.keystorePath = keystorePath;
+        return this;
+    }
+
+    public String getKeystoreName() {
+        return keystoreName;
+    }
+
+    public CACertificateRequire setKeystoreName(String keystoreName) {
+        this.keystoreName = keystoreName;
+        return this;
+    }
+
+    public String getStorepass() {
+        return storepass;
+    }
+
+    public CACertificateRequire setStorepass(String storepass) {
+        this.storepass = storepass;
+        return this;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public CACertificateRequire setCountry(String country) {
+        this.country = country;
+        return this;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public CACertificateRequire setProvince(String province) {
+        this.province = province;
+        return this;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public CACertificateRequire setCity(String city) {
+        this.city = city;
+        return this;
     }
 
     public String getAppCode () throws Exception {

@@ -86,10 +86,16 @@ public class JksCoreTest extends TestCase {
         caCertificateRequire.setAppId("your_app_id")
                     .setAppSecret("your_app_secret")
                     .setHost("https://localhost:3030")
+                    .setPath("/cert/generate")
                     .setIdentityCode("user_identity_code")
                     .setName("wangwu")
                     .setCertPassword("123123123")
-                    .setPath("/cert/generate");
+                    .setCity("Hangzhou")
+                    .setCountry("CN")
+                    .setProvince("Zhejiang")
+                    .setKeystoreName("demo.ks")
+                    .setKeystorePath(this.jksSavePath);
+
         JSONObject result = jksCore.doJob(requireCACertificate, caCertificateRequire);
         Assert.assertEquals("success", result.get("msg"));
     }

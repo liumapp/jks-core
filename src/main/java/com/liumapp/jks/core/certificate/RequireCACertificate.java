@@ -35,6 +35,9 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
             object.put("identityCode", data.getIdentityCode());
             object.put("code", data.getAppCode());
             object.put("password", data.getCertPassword());
+            object.put("country", data.getCountry());
+            object.put("province", data.getProvince());
+            object.put("city", data.getCity());
             String bodys = object.toJSONString();
             headers.put("Content-Type", "application/json");
             HttpResponse response = httpUtil.doPost(data.getHost(),
