@@ -32,4 +32,11 @@ public class FileManager {
         return Long.toString(rand);
     }
 
+    public void rmFile (String filepath) {
+        File tmp = new File(filepath);
+        if (tmp.exists()) {
+            tmp.delete();
+        }
+    }
+
 }

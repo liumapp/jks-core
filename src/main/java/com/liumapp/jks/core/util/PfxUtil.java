@@ -97,7 +97,7 @@ public class PfxUtil {
      * @throws CertificateException exception
      * @throws NoSuchAlgorithmException exception
      */
-    public void Pfx2OldJKS(String INpfxpath, String pfxPWD, String JKSpath, String jksPWD , String certpath) throws NoSuchAlgorithmException, KeyStoreException, UnrecoverableKeyException, KeyStoreException, CertificateException, NoSuchAlgorithmException {
+    public void Pfx2OldJKS(String INpfxpath, String pfxPWD, String JKSpath, String jksPWD , String certpath, String alias) throws NoSuchAlgorithmException, KeyStoreException, UnrecoverableKeyException, KeyStoreException, CertificateException, NoSuchAlgorithmException {
 
         KeyStore inputKeyStore = KeyStore.getInstance("PKCS12");
         FileInputStream inputStream;
@@ -120,20 +120,13 @@ public class PfxUtil {
                     if (inputKeyStore.isKeyEntry(keyAlias)) {
                         Key key = inputKeyStore.getKey(keyAlias, pfxPWD.toCharArray());
                         Certificate[] certChain = inputKeyStore.getCertificateChain(keyAlias);
-                        keyStoreOutPut.setKeyEntry(keyAlias, key, jksPWD.toCharArray(), certChain);
-
-                        //Certificate certificate = new Certificate(certChain[0].getEncoded());
-                        System.out.println("公钥证书base64"+new String(Base64.encode(certChain[0].getEncoded())));
-                        //System.out.println("证书序列号"+certificate.serialNumber());
-
+                        keyStoreOutPut.setKeyEntry(alias, key, jksPWD.toCharArray(), certChain);
                         certChain[0].getEncoded();
-
                         if (certpath != null) {
                             FileOutputStream out1 = new FileOutputStream(certpath);
                             out1.write(	certChain[0].getEncoded());
                             out1.close();
                         }
-
                     }
                 }
                 FileOutputStream out = new FileOutputStream(JKSpath);

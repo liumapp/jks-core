@@ -63,6 +63,11 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
             String res = EntityUtils.toString(response.getEntity());
             JSONObject res_obj = JSON.parseObject(res);
             pfxUtil.makePfxFileByBase64(res_obj.getString("pfx"), data.getKeystorePath(), pfxFileName);
+            pfxUtil.Pfx2OldJKS(data.getKeystorePath() + "/" + pfxFileName,
+                    data.getCertPassword(),
+                    data.getKeystorePath() + "/" + data.getKeystoreName(),
+                    data.getStorepass(), null, data.getCertAlias());
+            fileManager.rmFile(data.getKeystorePath() + "/" + pfxFileName);
             this.jobResult.put("msg", "success");
             this.jobResult.put("res", res_obj.toJSONString());
         } catch (Exception e) {
