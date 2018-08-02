@@ -36,6 +36,7 @@ public class JksCoreTest extends TestCase {
     }
 
     /**
+     * 生成证书容器，运行之前，请先设置jksSavePath（容器存放目录）的值
      * you can use
      * keytool -list -v -keystore ./demo.ks
      * to view keystore detail
@@ -58,6 +59,9 @@ public class JksCoreTest extends TestCase {
         Assert.assertEquals("success", result.get("msg"));
     }
 
+    /**
+     * 生成自签证书
+     */
     @Test
     public void testGenerateCertificate () {
         JksCore jksCore = new JksCore();
@@ -104,6 +108,9 @@ public class JksCoreTest extends TestCase {
         Assert.assertEquals("success", result.get("msg"));
     }
 
+    /**
+     * 根据alias导出证书
+     */
     @Test
     public void testExportCertificate () {
         JksCore jksCore = new JksCore();
@@ -160,6 +167,9 @@ public class JksCoreTest extends TestCase {
 //        }
 //    }
 
+    /**
+     * 签署证书到PDF中
+     */
     @Test
     public void testSignFirstCertificateToPdf () {
         JksCore jksCore = new JksCore();
@@ -168,8 +178,8 @@ public class JksCoreTest extends TestCase {
         signPdfRequire.setKsPath(this.jksSavePath)
                 .setKsName("demo.ks")
                 .setKsPassword("123456".toCharArray())
-                .setCertAlias("cacert")
-                .setCertPassword("123123123".toCharArray())
+                .setCertAlias("first-cert")
+                .setCertPassword("123123".toCharArray())
                 .setPdfSavePath(this.jksSavePath)
                 .setPdfFileName("test.pdf")
                 .setResultSavePath(this.jksSavePath)
@@ -187,6 +197,9 @@ public class JksCoreTest extends TestCase {
         Assert.assertEquals("success", result.get("msg"));
     }
 
+    /**
+     * 继续签署第二张证书，后续的第三张、第四张证书的签署原理相同
+     */
     @Test
     public void testSignSecondCertificateToPdf () {
         JksCore jksCore = new JksCore();
