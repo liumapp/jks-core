@@ -77,6 +77,9 @@ public class JksCoreTest extends TestCase {
         Assert.assertEquals("success", result.get("msg"));
     }
 
+    /**
+     * 获取正式证书，并存入证书容器中
+     */
     @Test
     public void testRequireCACertificate () {
         // todo
