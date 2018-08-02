@@ -28,6 +28,8 @@ public class CACertificateRequire extends JobData {
 
     private String identityCode;
 
+    private String certAlias;
+
     private String certPassword;
 
     private String keystorePath;
@@ -59,6 +61,15 @@ public class CACertificateRequire extends JobData {
         this.country = country;
         this.province = province;
         this.city = city;
+    }
+
+    public String getCertAlias() {
+        return certAlias;
+    }
+
+    public CACertificateRequire setCertAlias(String certAlias) {
+        this.certAlias = certAlias;
+        return this;
     }
 
     public String getKeystorePath() {

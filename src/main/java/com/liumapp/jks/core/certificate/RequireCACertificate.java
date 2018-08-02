@@ -2,14 +2,19 @@ package com.liumapp.jks.core.certificate;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.liumapp.jks.core.adapter.KeyStoreAdapter;
+import com.liumapp.jks.core.adapter.KeyTool;
 import com.liumapp.jks.core.certificate.require.CACertificateRequire;
 import com.liumapp.jks.core.filter.RequestFilter;
+import com.liumapp.jks.core.loader.Resource;
 import com.liumapp.jks.core.util.HttpUtil;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.FileOutputStream;
+import java.security.cert.Certificate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,6 +53,7 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
                     bodys);
             String res = EntityUtils.toString(response.getEntity());
             JSONObject res_obj = JSON.parseObject(res);
+
             this.jobResult.put("msg", "success");
             this.jobResult.put("res", res_obj.toJSONString());
         } catch (Exception e) {

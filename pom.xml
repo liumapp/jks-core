@@ -97,21 +97,7 @@
       <artifactId>commons-lang</artifactId>
       <version>2.6</version>
     </dependency>
-
-    <!--cert require-->
-    <dependency>
-      <groupId>cn.tca.TopBasicCrypto</groupId>
-      <artifactId>TopBasicCrypto</artifactId>
-      <version>1.9</version>
-    </dependency>
   </dependencies>
-
-  <repositories>
-    <repository>
-      <id>liumapp</id>
-      <url>http://www.liumapp.com:8081/repository/liumapp/</url>
-    </repository>
-  </repositories>
 
   <distributionManagement>
     <repository>
