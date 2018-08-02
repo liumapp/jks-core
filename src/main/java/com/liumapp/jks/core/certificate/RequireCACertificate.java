@@ -2,19 +2,16 @@ package com.liumapp.jks.core.certificate;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.liumapp.jks.core.adapter.KeyStoreAdapter;
-import com.liumapp.jks.core.adapter.KeyTool;
 import com.liumapp.jks.core.certificate.require.CACertificateRequire;
 import com.liumapp.jks.core.filter.RequestFilter;
-import com.liumapp.jks.core.loader.Resource;
+import com.liumapp.jks.core.util.FileManager;
 import com.liumapp.jks.core.util.HttpUtil;
+import com.liumapp.jks.core.util.PfxUtil;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileOutputStream;
-import java.security.cert.Certificate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,14 +24,26 @@ import java.util.Map;
  */
 public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
 
+    private HttpUtil httpUtil;
+
+    private PfxUtil pfxUtil;
+
+    private FileManager fileManager;
+
+    public RequireCACertificate() {
+        this.httpUtil = new HttpUtil();
+        this.pfxUtil = new PfxUtil();
+        this.fileManager = new FileManager();
+    }
+
     private static Logger LOGGER = LoggerFactory.getLogger(RequireCACertificate.class);
 
     @Override
     public JSONObject handle(CACertificateRequire data) {
-        HttpUtil httpUtil = new HttpUtil();
         Map<String, String> headers = new HashMap<String, String>();
         Map<String, String> querys = new HashMap<String, String>();
         JSONObject object = new JSONObject();
+        String pfxFileName = fileManager.generateRandomFileName() + ".pfx";
         try {
             object.put("name", data.getName());
             object.put("identityCode", data.getIdentityCode());
@@ -53,7 +62,7 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
                     bodys);
             String res = EntityUtils.toString(response.getEntity());
             JSONObject res_obj = JSON.parseObject(res);
-
+            pfxUtil.makePfxFileByBase64(res_obj.getString("pfx"), data.getKeystorePath(), pfxFileName);
             this.jobResult.put("msg", "success");
             this.jobResult.put("res", res_obj.toJSONString());
         } catch (Exception e) {

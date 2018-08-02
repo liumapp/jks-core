@@ -2,10 +2,7 @@ package com.liumapp.jks.core.util;
 
 import org.bouncycastle.util.encoders.Base64;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
@@ -154,6 +151,21 @@ public class PfxUtil {
             e.printStackTrace();
         }
 
+    }
+
+    /**
+     * @param baseContent base64 content of pfx file
+     * @param savePath pfx file save path
+     */
+    public void makePfxFileByBase64 (String baseContent, String savePath, String savename) throws IOException {
+        String pfxPath = savePath + "/" + savename;
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(new File(pfxPath));
+            fileOutputStream.write(Base64.decode(baseContent));
+            fileOutputStream.close();
+        } catch (IOException e) {
+            throw new IOException("生成pfx文件失败，请检查保存目录是否有效或具备写权限：" + pfxPath);
+        }
     }
 
 }
