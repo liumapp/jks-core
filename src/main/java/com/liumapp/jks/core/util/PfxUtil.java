@@ -120,7 +120,7 @@ public class PfxUtil {
                     if (inputKeyStore.isKeyEntry(keyAlias)) {
                         Key key = inputKeyStore.getKey(keyAlias, pfxPWD.toCharArray());
                         Certificate[] certChain = inputKeyStore.getCertificateChain(keyAlias);
-                        keyStoreOutPut.setKeyEntry(alias, key, jksPWD.toCharArray(), certChain);
+                        keyStoreOutPut.setKeyEntry(alias, key, pfxPWD.toCharArray(), certChain);
                         certChain[0].getEncoded();
                         if (certpath != null) {
                             FileOutputStream out1 = new FileOutputStream(certpath);
