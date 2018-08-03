@@ -46,7 +46,6 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
         String pfxFileName = fileManager.generateRandomFileName() + ".pfx";
         try {
             object.put("name", data.getName());
-            object.put("identityCode", data.getIdentityCode());
             object.put("code", data.getAppCode());
             object.put("password", data.getCertPassword());
             object.put("country", data.getCountry());

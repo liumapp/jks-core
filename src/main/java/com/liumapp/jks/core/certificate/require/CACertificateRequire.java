@@ -26,8 +26,6 @@ public class CACertificateRequire extends JobData {
 
     private String name;
 
-    private String identityCode;
-
     private String certAlias;
 
     private String certPassword;
@@ -47,13 +45,13 @@ public class CACertificateRequire extends JobData {
     public CACertificateRequire () {
     }
 
-    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String identityCode, String certPassword, String keystorePath, String keystoreName, String storepass, String country, String province, String city) {
+    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String certAlias, String certPassword, String keystorePath, String keystoreName, String storepass, String country, String province, String city) {
         this.host = host;
         this.path = path;
         this.appId = appId;
         this.appSecret = appSecret;
         this.name = name;
-        this.identityCode = identityCode;
+        this.certAlias = certAlias;
         this.certPassword = certPassword;
         this.keystorePath = keystorePath;
         this.keystoreName = keystoreName;
@@ -178,15 +176,6 @@ public class CACertificateRequire extends JobData {
 
     public CACertificateRequire setName(String name) {
         this.name = name;
-        return this;
-    }
-
-    public String getIdentityCode() {
-        return identityCode;
-    }
-
-    public CACertificateRequire setIdentityCode(String identityCode) {
-        this.identityCode = identityCode;
         return this;
     }
 
