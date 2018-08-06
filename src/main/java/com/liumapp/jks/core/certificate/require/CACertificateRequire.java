@@ -26,6 +26,8 @@ public class CACertificateRequire extends JobData {
 
     private String name;
 
+    private String identityCode;
+
     private String certAlias;
 
     private String certPassword;
@@ -45,12 +47,13 @@ public class CACertificateRequire extends JobData {
     public CACertificateRequire () {
     }
 
-    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String certAlias, String certPassword, String keystorePath, String keystoreName, String storepass, String country, String province, String city) {
+    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String identityCode, String certAlias, String certPassword, String keystorePath, String keystoreName, String storepass, String country, String province, String city) {
         this.host = host;
         this.path = path;
         this.appId = appId;
         this.appSecret = appSecret;
         this.name = name;
+        this.identityCode = identityCode;
         this.certAlias = certAlias;
         this.certPassword = certPassword;
         this.keystorePath = keystorePath;
@@ -59,6 +62,15 @@ public class CACertificateRequire extends JobData {
         this.country = country;
         this.province = province;
         this.city = city;
+    }
+
+    public String getIdentityCode() {
+        return identityCode;
+    }
+
+    public CACertificateRequire setIdentityCode(String identityCode) {
+        this.identityCode = identityCode;
+        return this;
     }
 
     public String getCertAlias() {
@@ -127,9 +139,8 @@ public class CACertificateRequire extends JobData {
     public String getAppCode () throws Exception {
         EncryptUtil encryptUtil = new EncryptUtil(CACertificateRequire.encryKey, "utf-8");
         String result = "";
-        result += "id_";
         result += encryptUtil.encode(this.appId);
-        result += "secret_";
+        result += "_";
         result += encryptUtil.encode(this.appSecret);
         return result;
     }
