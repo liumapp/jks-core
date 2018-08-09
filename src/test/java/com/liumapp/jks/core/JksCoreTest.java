@@ -125,6 +125,11 @@ public class JksCoreTest extends TestCase {
         Assert.assertEquals("success", result.get("msg"));
     }
 
+    @Test
+    public void testInstallPfx () {
+
+    }
+
     /**
      * 签署证书到PDF中
      */
