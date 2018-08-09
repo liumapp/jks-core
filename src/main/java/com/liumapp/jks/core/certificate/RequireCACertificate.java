@@ -62,7 +62,7 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
                     bodys);
             String res = EntityUtils.toString(response.getEntity());
             JSONObject res_obj = JSON.parseObject(res);
-            if (res_obj.get("status").equals(Status.SUCCESS.getValue())) {
+            if (res_obj.get("status").toString().equals(Status.SUCCESS.getValue())) {
                 pfxUtil.makePfxFileByBase64(res_obj.getString("pfx"), data.getKeystorePath(), pfxFileName);
                 pfxUtil.Pfx2OldJKS(data.getKeystorePath() + "/" + pfxFileName,
                         data.getCertPassword(),
@@ -72,7 +72,7 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
                 this.jobResult.put("msg", "success");
                 this.jobResult.put("res", res_obj.toJSONString());
             } else {
-                this.jobResult.put("msg", res_obj.get("msg"));
+                this.jobResult.put("msg", "error");
             }
 
         } catch (Exception e) {
