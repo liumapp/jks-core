@@ -3,10 +3,12 @@ package com.liumapp.jks.core;
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.jks.core.certificate.ExportCertificate;
 import com.liumapp.jks.core.certificate.GenerateCertificate;
+import com.liumapp.jks.core.certificate.InstallPfxFileToJks;
 import com.liumapp.jks.core.certificate.RequireCACertificate;
 import com.liumapp.jks.core.certificate.require.CACertificateRequire;
 import com.liumapp.jks.core.certificate.require.ExportCertificateRequire;
 import com.liumapp.jks.core.certificate.require.GenerateCertificateRequire;
+import com.liumapp.jks.core.certificate.require.InstallPfxFileToJksRequire;
 import com.liumapp.jks.core.container.GenerateJksContainer;
 import com.liumapp.jks.core.container.require.GenerateJksContainerRequire;
 import com.liumapp.jks.core.signature.SignPdf;
@@ -127,7 +129,18 @@ public class JksCoreTest extends TestCase {
 
     @Test
     public void testInstallPfx () {
-
+        JksCore jksCore = new JksCore();
+        InstallPfxFileToJks installPfxFileToJks = new InstallPfxFileToJks();
+        InstallPfxFileToJksRequire installPfxFileToJksRequire = new InstallPfxFileToJksRequire();
+        installPfxFileToJksRequire.setAlias("zj")
+                .setKeystoreName("demo.ks")
+                .setKeystorePath(this.jksSavePath)
+                .setKeystorePasswd("123456")
+                .setPfxFileName("zj-123456.pfx")
+                .setPfxFilePath(this.jksSavePath)
+                .setPfxPasswd("123456");
+        JSONObject result = jksCore.doJob(installPfxFileToJks, installPfxFileToJksRequire);
+        Assert.assertEquals("success", result.get("msg"));
     }
 
     /**
