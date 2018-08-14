@@ -3,8 +3,6 @@ package com.liumapp.jks.core.certificate.require;
 import com.liumapp.jks.core.job.JobData;
 import com.liumapp.jks.core.util.EncryptUtil;
 
-import java.security.Security;
-
 /**
  * @author liumapp
  * @file CACertificateRequire.java
@@ -44,16 +42,10 @@ public class CACertificateRequire extends JobData {
 
     private String storepass;
 
-    private String country;
-
-    private String province;
-
-    private String city;
-
     public CACertificateRequire () {
     }
 
-    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String identityCode, String email, String organization, String organizationUnit, String certAlias, String certPassword, String keystorePath, String keystoreName, String storepass, String country, String province, String city) {
+    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String identityCode, String email, String organization, String organizationUnit, String certAlias, String certPassword, String keystorePath, String keystoreName, String storepass) {
         this.host = host;
         this.path = path;
         this.appId = appId;
@@ -68,9 +60,6 @@ public class CACertificateRequire extends JobData {
         this.keystorePath = keystorePath;
         this.keystoreName = keystoreName;
         this.storepass = storepass;
-        this.country = country;
-        this.province = province;
-        this.city = city;
     }
 
     public String getEmail() {
@@ -142,33 +131,6 @@ public class CACertificateRequire extends JobData {
 
     public CACertificateRequire setStorepass(String storepass) {
         this.storepass = storepass;
-        return this;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public CACertificateRequire setCountry(String country) {
-        this.country = country;
-        return this;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public CACertificateRequire setProvince(String province) {
-        this.province = province;
-        return this;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public CACertificateRequire setCity(String city) {
-        this.city = city;
         return this;
     }
 

@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.liumapp.jks.core.certificate.require.CACertificateRequire;
 import com.liumapp.jks.core.filter.RequestFilter;
-import com.liumapp.jks.core.status.Status;
 import com.liumapp.jks.core.util.FileManager;
 import com.liumapp.jks.core.util.HttpUtil;
 import com.liumapp.jks.core.util.PfxUtil;
@@ -47,11 +46,12 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
         String pfxFileName = fileManager.generateRandomFileName() + ".pfx";
         try {
             object.put("name", data.getName());
+            object.put("identityCode", data.getIdentityCode());
+            object.put("email", data.getEmail());
+            object.put("organization", data.getOrganization());
+            object.put("organizationUnit", data.getOrganizationUnit());
             object.put("code", data.getAppCode());
             object.put("password", data.getCertPassword());
-            object.put("country", data.getCountry());
-            object.put("province", data.getProvince());
-            object.put("city", data.getCity());
             String bodys = object.toJSONString();
             headers.put("Content-Type", "application/json");
             HttpResponse response = httpUtil.doPost(data.getHost(),
@@ -62,7 +62,8 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
                     bodys);
             String res = EntityUtils.toString(response.getEntity());
             JSONObject res_obj = JSON.parseObject(res);
-            if (res_obj.get("status").toString().equals(Status.SUCCESS.getValue())) {
+            Integer status = res_obj.getInteger("status");
+            if (status.equals(10001)) {
                 pfxUtil.makePfxFileByBase64(res_obj.getString("pfx"), data.getKeystorePath(), pfxFileName);
                 pfxUtil.Pfx2OldJKS(data.getKeystorePath() + "/" + pfxFileName,
                         data.getCertPassword(),
@@ -72,9 +73,8 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
                 this.jobResult.put("msg", "success");
                 this.jobResult.put("res", res_obj.toJSONString());
             } else {
-                this.jobResult.put("msg", "error");
+                this.jobResult.put("msg", res_obj.get("msg"));
             }
-
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             this.jobResult.put("msg", "error");
