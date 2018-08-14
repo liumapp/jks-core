@@ -28,6 +28,12 @@ public class CACertificateRequire extends JobData {
 
     private String identityCode;
 
+    private String email;
+
+    private String organization;
+
+    private String organizationUnit;
+
     private String certAlias;
 
     private String certPassword;
@@ -47,13 +53,16 @@ public class CACertificateRequire extends JobData {
     public CACertificateRequire () {
     }
 
-    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String identityCode, String certAlias, String certPassword, String keystorePath, String keystoreName, String storepass, String country, String province, String city) {
+    public CACertificateRequire(String host, String path, String appId, String appSecret, String name, String identityCode, String email, String organization, String organizationUnit, String certAlias, String certPassword, String keystorePath, String keystoreName, String storepass, String country, String province, String city) {
         this.host = host;
         this.path = path;
         this.appId = appId;
         this.appSecret = appSecret;
         this.name = name;
         this.identityCode = identityCode;
+        this.email = email;
+        this.organization = organization;
+        this.organizationUnit = organizationUnit;
         this.certAlias = certAlias;
         this.certPassword = certPassword;
         this.keystorePath = keystorePath;
@@ -62,6 +71,33 @@ public class CACertificateRequire extends JobData {
         this.country = country;
         this.province = province;
         this.city = city;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public CACertificateRequire setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public CACertificateRequire setOrganization(String organization) {
+        this.organization = organization;
+        return this;
+    }
+
+    public String getOrganizationUnit() {
+        return organizationUnit;
+    }
+
+    public CACertificateRequire setOrganizationUnit(String organizationUnit) {
+        this.organizationUnit = organizationUnit;
+        return this;
     }
 
     public String getIdentityCode() {
