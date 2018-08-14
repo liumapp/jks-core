@@ -41,14 +41,6 @@ public class HttpUtil {
 
     /**
      * get
-     *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doGet(String host, String path, String method,
                                      Map<String, String> headers,
@@ -66,15 +58,6 @@ public class HttpUtil {
 
     /**
      * post form
-     *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param bodys
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doPost(String host, String path, String method,
                                       Map<String, String> headers,
@@ -104,15 +87,6 @@ public class HttpUtil {
 
     /**
      * Post String
-     *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doPost(String host, String path, String method,
                                       Map<String, String> headers,
@@ -135,15 +109,6 @@ public class HttpUtil {
 
     /**
      * Post stream
-     *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doPost(String host, String path, String method,
                                       Map<String, String> headers,
@@ -166,14 +131,6 @@ public class HttpUtil {
 
     /**
      * Put String
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doPut(String host, String path, String method,
                                      Map<String, String> headers,
@@ -196,14 +153,6 @@ public class HttpUtil {
 
     /**
      * Put stream
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doPut(String host, String path, String method,
                                      Map<String, String> headers,
@@ -226,14 +175,6 @@ public class HttpUtil {
 
     /**
      * Delete
-     *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doDelete(String host, String path, String method,
                                         Map<String, String> headers,
