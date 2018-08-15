@@ -92,16 +92,16 @@ public class JksCoreTest extends TestCase {
         JksCore jksCore = new JksCore();
         RequireCACertificate requireCACertificate = new RequireCACertificate();
         CACertificateRequire caCertificateRequire = new CACertificateRequire();
-        caCertificateRequire.setAppId("test_app_id")
-                    .setAppSecret("test_app_secret")
-                    .setHost("http://localhost:3030")
+        caCertificateRequire.setAppId("d032b434a05f4ce4a15707d4d99cc205")
+                    .setAppSecret("916c6f538a894643a75ab30830112fe19b63f20e4f28451781c2248bbefced5d")
+                    .setHost("http://sdk.fangxinqian.cn:3030")
                     .setPath("/cert/generate")
                     .setName("limou")
                     .setIdentityCode("123123123123123123")
                     .setEmail("liumapp.com@gmail.com")
                     .setOrganization("这里填写贵公司名称")
                     .setOrganizationUnit("这里填写贵部门名称")
-                    .setCertAlias("ca-cert-alias")
+                    .setCertAlias("ca-cert-alias2")
                     .setCertPassword("123123123")
                     .setKeystoreName("demo.ks")
                     .setStorepass("123456")
