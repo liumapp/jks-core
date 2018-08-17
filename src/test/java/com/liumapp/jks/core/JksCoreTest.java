@@ -85,23 +85,25 @@ public class JksCoreTest extends TestCase {
 
     /**
      * 获取正式证书，并存入证书容器中
+     * 正式证书只有一天的有效期，意味着申请后必须在一天之内完成签署，否则您需要重新申请新的证书
+     * 正式证书的申请将会产生扣费操作，并且一经申请，您需要确保对其本人真实性的有效操作
+     * 如额外购买了实名认证接口，请联系技术liumapp负责对接
      */
     @Test
     public void testRequireCACertificate () {
-        // todo
         JksCore jksCore = new JksCore();
         RequireCACertificate requireCACertificate = new RequireCACertificate();
         CACertificateRequire caCertificateRequire = new CACertificateRequire();
-        caCertificateRequire.setAppId("d032b434a05f4ce4a15707d4d99cc205")
-                    .setAppSecret("916c6f538a894643a75ab30830112fe19b63f20e4f28451781c2248bbefced5d")
+        caCertificateRequire.setAppId("d5562ef27ad74354b23bd3829ce3519f")
+                    .setAppSecret("3b9678867b7d404888094f2a06019e7640358edfd0874c82b7d4737bcf95bfb6")
                     .setHost("http://sdk.fangxinqian.cn:3030")
                     .setPath("/cert/generate")
-                    .setName("limou")
+                    .setName("lisi")
                     .setIdentityCode("123123123123123123")
                     .setEmail("liumapp.com@gmail.com")
                     .setOrganization("这里填写贵公司名称")
                     .setOrganizationUnit("这里填写贵部门名称")
-                    .setCertAlias("ca-cert-alias2")
+                    .setCertAlias("alias-custom")
                     .setCertPassword("123123123")
                     .setKeystoreName("demo.ks")
                     .setStorepass("123456")
