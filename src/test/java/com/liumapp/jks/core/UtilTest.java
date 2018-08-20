@@ -18,15 +18,19 @@ public class UtilTest extends TestCase {
 
     private String savepath = "/usr/local/tomcat/project/jks-core/data";
 
+    private boolean debug = false;
+
     public void testCopyFile () throws IOException {
-        FileManager fileManager = new FileManager();
-        fileManager.copyFile(new File(savepath + "/" + "test.pdf"), new File(savepath + "/" + "test_copy.pdf"));
-        File test = new File(savepath + "/" + "test_copy.pdf");
-        if (test.exists()) {
-            Assert.assertTrue(true);
-            test.delete();
-        } else {
-            Assert.assertTrue(false);
+        if (debug) {
+            FileManager fileManager = new FileManager();
+            fileManager.copyFile(new File(savepath + "/" + "test.pdf"), new File(savepath + "/" + "test_copy.pdf"));
+            File test = new File(savepath + "/" + "test_copy.pdf");
+            if (test.exists()) {
+                Assert.assertTrue(true);
+                test.delete();
+            } else {
+                Assert.assertTrue(false);
+            }
         }
     }
 
