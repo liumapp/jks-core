@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 /**
- * @author liumapp
- * @file Resource.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/28/18
+ * author liumapp
+ * file Resource.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/28/18
  */
 public class Resource {
 

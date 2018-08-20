@@ -14,11 +14,11 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
- * @author liumapp
- * @file CertificateBuilder.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/28/18
+ * author liumapp
+ * file CertificateBuilder.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/28/18
  */
 public class CertificateBuilder {
 

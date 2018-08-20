@@ -19,11 +19,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 
 /**
- * @author liumapp
- * @file SignPdfRequire.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 7/10/18
+ * author liumapp
+ * file SignPdfRequire.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 7/10/18
  */
 public class SignPdfRequire extends JobData implements ActiveChainService, ActiveKeyStoreService, ActivePrivateKeyService {
 

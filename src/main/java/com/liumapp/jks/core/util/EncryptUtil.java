@@ -15,11 +15,11 @@ import sun.misc.BASE64Encoder;
 
 
 /**
- * @author liumapp
- * @file EncryptUtil.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/1
+ * author liumapp
+ * file EncryptUtil.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/1
  */
 public class EncryptUtil {
 

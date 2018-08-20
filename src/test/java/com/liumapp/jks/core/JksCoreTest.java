@@ -20,11 +20,11 @@ import org.junit.Test;
 import java.io.File;
 
 /**
- * @author liumapp
- * @file JksCoreTest.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/28/18
+ * author liumapp
+ * file JksCoreTest.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/28/18
  */
 public class JksCoreTest extends TestCase {
 
@@ -103,8 +103,8 @@ public class JksCoreTest extends TestCase {
             JksCore jksCore = new JksCore();
             RequireCACertificate requireCACertificate = new RequireCACertificate();
             CACertificateRequire caCertificateRequire = new CACertificateRequire();
-            caCertificateRequire.setAppId("d5562ef27ad74354b23bd3829ce3519f")
-                    .setAppSecret("3b9678867b7d404888094f2a06019e7640358edfd0874c82b7d4737bcf95bfb6")
+            caCertificateRequire.setAppId("test_app_id")
+                    .setAppSecret("test_app_secret")
                     .setHost("http://sdk.fangxinqian.cn:3030")
                     .setPath("/cert/generate")
                     .setName("lisi")
@@ -204,7 +204,7 @@ public class JksCoreTest extends TestCase {
             signPdfRequire.setKsPath(this.jksSavePath)
                     .setKsName("demo.ks")
                     .setKsPassword("123456".toCharArray())
-                    .setCertAlias("second-cert")d
+                    .setCertAlias("second-cert")
                     .setCertPassword("123123".toCharArray())
                     .setPdfSavePath(this.jksSavePath)
                     .setPdfFileName("test_with_signed.pdf")

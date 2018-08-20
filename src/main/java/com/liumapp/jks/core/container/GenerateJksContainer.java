@@ -11,11 +11,11 @@ import java.io.FileOutputStream;
 import java.time.temporal.ChronoUnit;
 
 /**
- * @author liumapp
- * @file GenerateJksContainer.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/28/18
+ * author liumapp
+ * file GenerateJksContainer.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/28/18
  */
 public class GenerateJksContainer extends RequestFilter<GenerateJksContainerRequire> {
 

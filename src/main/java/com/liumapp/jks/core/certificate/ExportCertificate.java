@@ -13,11 +13,11 @@ import java.io.FileOutputStream;
 import java.security.cert.Certificate;
 
 /**
- * @author liumapp
- * @file ExportCertificate.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/28/18
+ * author liumapp
+ * file ExportCertificate.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/28/18
  */
 public class ExportCertificate extends RequestFilter<ExportCertificateRequire> {
 

@@ -9,11 +9,11 @@ import java.security.cert.CertificateException;
 import java.util.Enumeration;
 
 /**
- * @author liumapp
- * @file PfxUtil.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/2
+ * author liumapp
+ * file PfxUtil.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/2
  */
 public class PfxUtil {
 

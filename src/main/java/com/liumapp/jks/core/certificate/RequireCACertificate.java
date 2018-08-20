@@ -16,11 +16,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author liumapp
- * @file RequireCACertificate.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/1
+ * author liumapp
+ * file RequireCACertificate.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/1
  */
 public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
 

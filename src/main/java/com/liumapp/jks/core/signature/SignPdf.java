@@ -22,11 +22,11 @@ import java.security.cert.Certificate;
 import java.util.Date;
 
 /**
- * @author liumapp
- * @file SignPdf.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 7/10/18
+ * author liumapp
+ * file SignPdf.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 7/10/18
  */
 public class SignPdf extends RequestFilter<SignPdfRequire> {
 

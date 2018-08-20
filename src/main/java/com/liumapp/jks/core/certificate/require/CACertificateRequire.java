@@ -4,11 +4,11 @@ import com.liumapp.jks.core.job.JobData;
 import com.liumapp.jks.core.util.EncryptUtil;
 
 /**
- * @author liumapp
- * @file CACertificateRequire.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/1
+ * author liumapp
+ * file CACertificateRequire.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/1
  */
 public class CACertificateRequire extends JobData {
 

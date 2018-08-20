@@ -23,11 +23,11 @@ import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 /**
- * @author liumapp
- * @file KeyStoreAdapter.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/28/18
+ * author liumapp
+ * file KeyStoreAdapter.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/28/18
  */
 public class KeyStoreAdapter {
 

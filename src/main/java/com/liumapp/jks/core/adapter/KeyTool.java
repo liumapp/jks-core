@@ -12,11 +12,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author liumapp
- * @file KeyTool.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/28/18
+ * author liumapp
+ * file KeyTool.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/28/18
  */
 public class KeyTool {
 

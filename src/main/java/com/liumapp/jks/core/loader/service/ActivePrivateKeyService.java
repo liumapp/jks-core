@@ -8,11 +8,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 
 /**
- * @author liumapp
- * @file ActivePrivateKeyService.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 7/11/18
+ * author liumapp
+ * file ActivePrivateKeyService.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 7/11/18
  */
 public interface ActivePrivateKeyService {
 

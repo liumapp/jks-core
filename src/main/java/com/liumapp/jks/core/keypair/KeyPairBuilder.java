@@ -7,11 +7,11 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * @author liumapp
- * @file KeyPairBuilder.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/28/18
+ * author liumapp
+ * file KeyPairBuilder.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/28/18
  */
 public class KeyPairBuilder {
 

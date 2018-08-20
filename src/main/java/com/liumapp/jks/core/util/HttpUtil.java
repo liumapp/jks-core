@@ -31,11 +31,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author liumapp
- * @file HttpUtil.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/1
+ * author liumapp
+ * file HttpUtil.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/1
  */
 public class HttpUtil {
 

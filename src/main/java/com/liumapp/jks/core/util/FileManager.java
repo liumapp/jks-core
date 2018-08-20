@@ -6,11 +6,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * @author liumapp
- * @file FileManager.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 7/17/18
+ * author liumapp
+ * file FileManager.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 7/17/18
  */
 public class FileManager {
 

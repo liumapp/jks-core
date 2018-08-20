@@ -10,11 +10,11 @@ import java.nio.charset.StandardCharsets;
 import java.security.SignatureException;
 
 /**
- * @author liumapp
- * @file CSR.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/28/18
+ * author liumapp
+ * file CSR.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/28/18
  */
 public class CSR {
 

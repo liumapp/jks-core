@@ -5,11 +5,11 @@ import com.liumapp.jks.core.job.JobData;
 /**
  * under coding , plz do not use right now
  * todo
- * @author liumapp
- * @file AddSignatureAreaRequire.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/29/18
+ * author liumapp
+ * file AddSignatureAreaRequire.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/29/18
  */
 public class AddSignatureAreaRequire extends JobData {
 

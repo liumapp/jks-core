@@ -1,11 +1,11 @@
 package com.liumapp.jks.core.conditions;
 
 /**
- * @author liumapp
- * @file Preconditions.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/28/18
+ * author liumapp
+ * file Preconditions.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/28/18
  */
 public class Preconditions {
 

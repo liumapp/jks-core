@@ -13,11 +13,11 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 
 /**
- * @author liumapp
- * @file AddSignatureArea.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 6/29/18
+ * author liumapp
+ * file AddSignatureArea.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 6/29/18
  */
 public class AddSignatureArea extends RequestFilter<AddSignatureAreaRequire> {
 

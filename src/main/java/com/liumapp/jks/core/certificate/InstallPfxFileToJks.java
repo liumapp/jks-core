@@ -8,11 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author liumapp
- * @file InstallPfxFileToJks.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/9
+ * author liumapp
+ * file InstallPfxFileToJks.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/9
  */
 public class InstallPfxFileToJks extends RequestFilter<InstallPfxFileToJksRequire> {
 
