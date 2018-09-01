@@ -105,7 +105,7 @@ public class JksCoreTest extends TestCase {
             CACertificateRequire caCertificateRequire = new CACertificateRequire();
             caCertificateRequire.setAppId("test_app_id")
                     .setAppSecret("test_app_secret")
-                    .setHost("http://sdk.fangxinqian.cn:3030")
+                    .setHost("http://localhost:3030")
                     .setPath("/cert/generate")
                     .setName("lisi")
                     .setIdentityCode("123123123123123123")
