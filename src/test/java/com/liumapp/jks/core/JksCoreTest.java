@@ -12,12 +12,17 @@ import com.liumapp.jks.core.certificate.require.InstallPfxFileToJksRequire;
 import com.liumapp.jks.core.container.GenerateJksContainer;
 import com.liumapp.jks.core.container.require.GenerateJksContainerRequire;
 import com.liumapp.jks.core.signature.SignPdf;
+import com.liumapp.jks.core.signature.SignPdfWithTimeStamp;
 import com.liumapp.jks.core.signature.require.SignPdfRequire;
+import com.liumapp.jks.core.signature.require.SignPdfWithTimeStampRequire;
+import com.liumapp.qtools.date.DateTool;
+import com.liumapp.qtools.security.encrypt.Sha1Tool;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Date;
 
 /**
  * author liumapp
@@ -30,7 +35,7 @@ public class JksCoreTest extends TestCase {
 
     private String jksSavePath = "/usr/local/tomcat/project/jks-core/data/";
 
-    private boolean debug = false;
+    private boolean debug = true;
 
     @Override
     protected void setUp() throws Exception {
@@ -188,6 +193,39 @@ public class JksCoreTest extends TestCase {
                     .setSignFieldName("firstSignatureArea")
                     .setSignPicPath(this.jksSavePath + "/" + "me.jpg");
             JSONObject result = jksCore.doJob(signPdf, signPdfRequire);
+            Assert.assertEquals("success", result.get("msg"));
+        }
+    }
+
+    @Test
+    public void testSignFirstCertificateWithTimeStampToPdf () {
+        if (debug) {
+            String host = "http://ets.wotrus.com/";
+            String path = "tk_3_" + Sha1Tool.toSHA1("2018090108" + "_" + "1zPz3KSTtj5SE7s");
+            String url = host + path;
+            JksCore jksCore = new JksCore();
+            SignPdfWithTimeStamp signPdfWithTimeStamp = new SignPdfWithTimeStamp();
+            SignPdfWithTimeStampRequire signPdfWithTimeStampRequire = new SignPdfWithTimeStampRequire();
+            signPdfWithTimeStampRequire.setKsPath(this.jksSavePath)
+                    .setKsName("demo.ks")
+                    .setKsPassword("123456".toCharArray())
+                    .setCertAlias("alias-custom")
+                    .setCertPassword("123123123".toCharArray())
+                    .setPdfSavePath(this.jksSavePath)
+                    .setPdfFileName("test.pdf")
+                    .setResultSavePath(this.jksSavePath)
+                    .setResultSaveName("test_with_signed.pdf")
+                    .setReason("this is reason")
+                    .setLocation("this is location")
+                    .setFirstX(50)
+                    .setFirstY(50)
+                    .setSecondX(100)
+                    .setSecondY(100)
+                    .setPageNum(1)
+                    .setSignFieldName("firstSignatureArea")
+                    .setSignPicPath(this.jksSavePath + "/" + "me.jpg")
+                    .setTimeStampServer(url);
+            JSONObject result = jksCore.doJob(signPdfWithTimeStamp, signPdfWithTimeStampRequire);
             Assert.assertEquals("success", result.get("msg"));
         }
     }

@@ -11,7 +11,6 @@ import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.security.*;
 import com.liumapp.jks.core.filter.RequestFilter;
 import com.liumapp.jks.core.loader.ChainLoader;
-import com.liumapp.jks.core.signature.require.SignPdfRequire;
 import com.liumapp.jks.core.signature.require.SignPdfWithTimeStampRequire;
 import com.liumapp.jks.core.util.FileManager;
 
@@ -50,7 +49,7 @@ public class SignPdfWithTimeStamp extends RequestFilter<SignPdfWithTimeStampRequ
             ExternalDigest digest = new BouncyCastleDigest();
             // 调用itext签名方法完成pdf签章
             MakeSignature.signDetached(appearance, digest, pks, this.buildingChain(data.getActiveCertificates()),
-                    null, null, new TSAClientBouncyCastle(data.getTimeStampServer()), 0, data.getSigtype());
+                    null, null, new TSAClientBouncyCastle2(data.getTimeStampServer()), 0, data.getSigtype());
             this.jobResult.put("msg", "success");
         } catch (Exception e) {
             e.printStackTrace();
@@ -130,7 +129,5 @@ public class SignPdfWithTimeStamp extends RequestFilter<SignPdfWithTimeStampRequ
         }
         return savePath + "/" + tmpName;
     }
-
-
 
 }
