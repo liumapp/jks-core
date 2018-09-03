@@ -165,6 +165,7 @@ public class SignPdfWithTimeStampRequire extends JobData implements ActiveChainS
         result += encryptUtil.encode(this.appId);
         result += "_";
         result += encryptUtil.encode(this.appSecret);
+        result += "_";
         result += StrRandomTool.getUuid(true);
         return result;
     }
