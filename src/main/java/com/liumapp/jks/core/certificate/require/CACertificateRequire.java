@@ -1,5 +1,6 @@
 package com.liumapp.jks.core.certificate.require;
 
+import com.liumapp.jks.core.constant.EncryConstant;
 import com.liumapp.jks.core.job.JobData;
 import com.liumapp.jks.core.util.EncryptUtil;
 
@@ -12,7 +13,7 @@ import com.liumapp.jks.core.util.EncryptUtil;
  */
 public class CACertificateRequire extends JobData {
 
-    private static final String encryKey = "9ba76bfd500642328ec03ad8ef1b6e75";
+    private static final String encryKey = EncryConstant.encryPostmethodKey;
 
     private String host;
 

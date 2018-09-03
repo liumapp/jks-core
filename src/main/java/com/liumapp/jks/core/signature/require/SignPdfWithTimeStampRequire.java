@@ -3,6 +3,8 @@ package com.liumapp.jks.core.signature.require;
 import com.itextpdf.text.pdf.PdfSignatureAppearance;
 import com.itextpdf.text.pdf.security.DigestAlgorithms;
 import com.itextpdf.text.pdf.security.MakeSignature;
+import com.liumapp.jks.core.certificate.require.CACertificateRequire;
+import com.liumapp.jks.core.constant.EncryConstant;
 import com.liumapp.jks.core.job.JobData;
 import com.liumapp.jks.core.loader.ChainLoader;
 import com.liumapp.jks.core.loader.JksLoader;
@@ -13,6 +15,7 @@ import com.liumapp.jks.core.loader.require.PrivateKeyLoadingRequire;
 import com.liumapp.jks.core.loader.service.ActiveChainService;
 import com.liumapp.jks.core.loader.service.ActiveKeyStoreService;
 import com.liumapp.jks.core.loader.service.ActivePrivateKeyService;
+import com.liumapp.jks.core.util.EncryptUtil;
 
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -153,6 +156,15 @@ public class SignPdfWithTimeStampRequire extends JobData implements ActiveChainS
     public ChainLoadingRequire getChainLoadingRequire(JksLoader.ActiveKeyStore activeKeyStore) {
         chainLoadingRequire.setActiveKeyStore(activeKeyStore);
         return chainLoadingRequire;
+    }
+
+    public String getAppCode () throws Exception {
+        EncryptUtil encryptUtil = new EncryptUtil(EncryConstant.encryGetMethodKey, "utf-8");
+        String result = "";
+        result += encryptUtil.encode(this.appId);
+        result += "_";
+        result += encryptUtil.encode(this.appSecret);
+        return result;
     }
 
     public JksLoadingRequire getJksLoadingRequire() {
