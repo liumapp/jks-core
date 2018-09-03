@@ -112,7 +112,7 @@ public class JksCoreTest extends TestCase {
                     .setAppSecret("test_app_secret")
                     .setHost("http://localhost:3030")
                     .setPath("/cert/generate")
-                    .setName("lisi")
+                    .setName("zhangsan")
                     .setIdentityCode("123123123123123123")
                     .setEmail("liumapp.com@gmail.com")
                     .setOrganization("这里填写贵公司名称")
