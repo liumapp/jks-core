@@ -204,8 +204,6 @@ public class JksCoreTest extends TestCase {
             SignPdfWithTimeStamp signPdfWithTimeStamp = new SignPdfWithTimeStamp();
             SignPdfWithTimeStampRequire signPdfWithTimeStampRequire = new SignPdfWithTimeStampRequire();
             signPdfWithTimeStampRequire.setKsPath(this.jksSavePath)
-                    .setAppId("test_app_id")
-                    .setAppSecret("test_app_secret")
                     .setKsName("demo.ks")
                     .setKsPassword("123456".toCharArray())
                     .setCertAlias("alias-custom")
@@ -223,6 +221,8 @@ public class JksCoreTest extends TestCase {
                     .setPageNum(1)
                     .setSignFieldName("firstSignatureArea")
                     .setSignPicPath(this.jksSavePath + "/" + "me.jpg")
+                    .setAppId("test_app_id")
+                    .setAppSecret("test_app_secret")
                     .setTimeStampServer("http://localhost:3030/timestamp/require");
             JSONObject result = jksCore.doJob(signPdfWithTimeStamp, signPdfWithTimeStampRequire);
             Assert.assertEquals("success", result.get("msg"));
