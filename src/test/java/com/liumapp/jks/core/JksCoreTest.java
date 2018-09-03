@@ -205,6 +205,8 @@ public class JksCoreTest extends TestCase {
             SignPdfWithTimeStamp signPdfWithTimeStamp = new SignPdfWithTimeStamp();
             SignPdfWithTimeStampRequire signPdfWithTimeStampRequire = new SignPdfWithTimeStampRequire();
             signPdfWithTimeStampRequire.setKsPath(this.jksSavePath)
+                    .setAppId("test_app_id")
+                    .setAppSecret("test_app_secret")
                     .setKsName("demo.ks")
                     .setKsPassword("123456".toCharArray())
                     .setCertAlias("alias-custom")

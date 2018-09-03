@@ -86,6 +86,10 @@ public class SignPdfWithTimeStampRequire extends JobData implements ActiveChainS
 
     private String timeStampServer;
 
+    private String appId;
+
+    private String appSecret;
+
     public SignPdfWithTimeStampRequire() {
     }
 
@@ -351,6 +355,24 @@ public class SignPdfWithTimeStampRequire extends JobData implements ActiveChainS
 
     public SignPdfWithTimeStampRequire setTimeStampServer(String timeStampServer) {
         this.timeStampServer = timeStampServer;
+        return this;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public SignPdfWithTimeStampRequire setAppId(String appId) {
+        this.appId = appId;
+        return this;
+    }
+
+    public String getAppSecret() {
+        return appSecret;
+    }
+
+    public SignPdfWithTimeStampRequire setAppSecret(String appSecret) {
+        this.appSecret = appSecret;
         return this;
     }
 }
