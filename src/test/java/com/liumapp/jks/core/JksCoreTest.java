@@ -201,7 +201,7 @@ public class JksCoreTest extends TestCase {
     public void testSignFirstCertificateWithTimeStampToPdf () {
         if (debug) {
             String host = "http://ets.wotrus.com/";
-            String path = "tk_3_" + Sha1Tool.toSHA1("2018090108" + "_" + "1zPz3KSTtj5SE7s");
+            String path = "tk_3_" + Sha1Tool.toSHA1(DateTool.getSimpleUTCDateString() + "_" + "1zPz3KSTtj5SE7s");
             String url = host + path;
             JksCore jksCore = new JksCore();
             SignPdfWithTimeStamp signPdfWithTimeStamp = new SignPdfWithTimeStamp();

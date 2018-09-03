@@ -79,7 +79,6 @@ public class TSAClientBouncyCastle2 implements TSAClient {
         TimeStampRequest request = tsqGenerator.generate(new ASN1ObjectIdentifier(DigestAlgorithms.getAllowedDigests(this.digestAlgorithm)), imprint, nonce);
         byte[] requestBytes = request.getEncoded();
         respBytes = this.getTSAResponse(requestBytes);
-        String resp = String.valueOf(respBytes);
         TimeStampResponse response = new TimeStampResponse(respBytes);
         response.validate(request);
         PKIFailureInfo failure = response.getFailInfo();
