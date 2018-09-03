@@ -200,7 +200,6 @@ public class JksCoreTest extends TestCase {
     @Test
     public void testSignFirstCertificateWithTimeStampToPdf () {
         if (debug) {
-            String url = "http://localhost:3030/timestamp/require";
             JksCore jksCore = new JksCore();
             SignPdfWithTimeStamp signPdfWithTimeStamp = new SignPdfWithTimeStamp();
             SignPdfWithTimeStampRequire signPdfWithTimeStampRequire = new SignPdfWithTimeStampRequire();
@@ -224,7 +223,7 @@ public class JksCoreTest extends TestCase {
                     .setPageNum(1)
                     .setSignFieldName("firstSignatureArea")
                     .setSignPicPath(this.jksSavePath + "/" + "me.jpg")
-                    .setTimeStampServer(url);
+                    .setTimeStampServer("http://localhost:3030/timestamp/require");
             JSONObject result = jksCore.doJob(signPdfWithTimeStamp, signPdfWithTimeStampRequire);
             Assert.assertEquals("success", result.get("msg"));
         }

@@ -16,6 +16,7 @@ import com.liumapp.jks.core.loader.service.ActiveChainService;
 import com.liumapp.jks.core.loader.service.ActiveKeyStoreService;
 import com.liumapp.jks.core.loader.service.ActivePrivateKeyService;
 import com.liumapp.jks.core.util.EncryptUtil;
+import com.liumapp.qtools.str.random.StrRandomTool;
 
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -164,6 +165,7 @@ public class SignPdfWithTimeStampRequire extends JobData implements ActiveChainS
         result += encryptUtil.encode(this.appId);
         result += "_";
         result += encryptUtil.encode(this.appSecret);
+        result += StrRandomTool.getUuid(true);
         return result;
     }
 
