@@ -18,6 +18,7 @@ import com.liumapp.jks.core.loader.service.ActivePrivateKeyService;
 import com.liumapp.jks.core.util.EncryptUtil;
 import com.liumapp.qtools.str.random.StrRandomTool;
 
+import java.net.URLEncoder;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
@@ -167,7 +168,7 @@ public class SignPdfWithTimeStampRequire extends JobData implements ActiveChainS
         result += encryptUtil.encode(this.appSecret);
         result += "_";
         result += StrRandomTool.getUuid(true);
-        return result;
+        return URLEncoder.encode(result, "UTF-8");
     }
 
     public JksLoadingRequire getJksLoadingRequire() {
