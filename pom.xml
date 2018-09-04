@@ -4,7 +4,7 @@
 
   <groupId>com.liumapp.jks.core</groupId>
   <artifactId>jks-core</artifactId>
-  <version>v1.4.3</version>
+  <version>v1.4.5</version>
   <packaging>jar</packaging>
 
   <properties>
