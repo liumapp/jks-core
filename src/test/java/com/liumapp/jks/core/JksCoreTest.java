@@ -35,7 +35,7 @@ public class JksCoreTest extends TestCase {
 
     private String jksSavePath = "/usr/local/tomcat/project/jks-core/data/";
 
-    private boolean debug = true;
+    private boolean debug = false;
 
     @Override
     protected void setUp() throws Exception {
