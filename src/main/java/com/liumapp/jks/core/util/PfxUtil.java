@@ -155,6 +155,7 @@ public class PfxUtil {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(new File(pfxPath));
             fileOutputStream.write(Base64.decode(baseContent));
+            fileOutputStream.flush();
             fileOutputStream.close();
         } catch (IOException e) {
             throw new IOException("生成pfx文件失败，请检查保存目录是否有效或具备写权限：" + pfxPath);
