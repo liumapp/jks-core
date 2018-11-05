@@ -65,7 +65,6 @@ public class RequireCACertificate extends RequestFilter <CACertificateRequire> {
             Integer status = res_obj.getInteger("status");
             if (status.equals(10001)) {
                 pfxUtil.makePfxFileByBase64(res_obj.getString("pfx"), data.getKeystorePath(), pfxFileName);
-                Thread.sleep(1500);//确保写入完成
                 pfxUtil.Pfx2OldJKS(data.getKeystorePath() + "/" + pfxFileName,
                         data.getCertPassword(),
                         data.getKeystorePath() + "/" + data.getKeystoreName(),
