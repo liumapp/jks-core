@@ -4,7 +4,7 @@
 
   <groupId>com.liumapp.jks.core</groupId>
   <artifactId>jks-core</artifactId>
-  <version>v1.4.5</version>
+  <version>v1.4.6</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -104,17 +104,17 @@
     <dependency>
       <groupId>com.liumapp.qtools.security.encrypt</groupId>
       <artifactId>qtools-security-encrypt</artifactId>
-      <version>v1.0.3</version>
+      <version>v1.2.6</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.date</groupId>
       <artifactId>qtools-date</artifactId>
-      <version>v1.0.5</version>
+      <version>v1.2.6</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.str</groupId>
       <artifactId>qtools-str</artifactId>
-      <version>v1.0.5</version>
+      <version>v1.2.6</version>
     </dependency>
   </dependencies>
 
@@ -169,18 +169,18 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-source-plugin</artifactId>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<id>attach-sources</id>-->
+            <!--<goals>-->
+              <!--<goal>jar-no-fork</goal>-->
+            <!--</goals>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
     </plugins>
   </build>
 

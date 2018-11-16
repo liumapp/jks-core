@@ -221,8 +221,8 @@ public class JksCoreTest extends TestCase {
                     .setPageNum(1)
                     .setSignFieldName("firstSignatureArea")
                     .setSignPicPath(this.jksSavePath + "/" + "me.jpg")
-                    .setAppId("c47db73b1cb54830a6c66714fabb1864")
-                    .setAppSecret("13806cdacc264e78b00d3d83cee52e5823420109d32e43fe892dc357b1a103a8")
+                    .setAppId("your app id here")
+                    .setAppSecret("your app secret here")
                     .setTimeStampServer("http://localhost:3030/timestamp/require");
             JSONObject result = jksCore.doJob(signPdfWithTimeStamp, signPdfWithTimeStampRequire);
             Assert.assertEquals("success", result.get("msg"));
