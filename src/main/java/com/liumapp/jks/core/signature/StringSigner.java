@@ -30,7 +30,7 @@ public class StringSigner extends RequestFilter<StringSignerRequire> {
             PdfStamper stamper = new PdfStamper(pdfReader, new FileOutputStream(data.getResultPath()));
             PdfContentByte canvas = stamper.getOverContent(data.getPage());
             BaseFont baseFont = BaseFont.createFont(AsianFontMapper.ChineseSimplifiedFont,  AsianFontMapper.ChineseSimplifiedEncoding_H, BaseFont.NOT_EMBEDDED);
-            Font font = new Font(baseFont, 8);
+            Font font = new Font(baseFont, data.getFontSize());
             ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(data.getContent(), font),
                     data.getFirstX(), data.getFirstY(), 0);
             stamper.close();

@@ -9,6 +9,8 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.*;
 import com.liumapp.jks.core.filter.RequestFilter;
 import com.liumapp.jks.core.signature.require.Base64StringSignerRequire;
+import com.liumapp.qtools.file.base64.Base64FileTool;
+import com.liumapp.qtools.str.random.StrRandomTool;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,15 +21,18 @@ public class Base64StringSigner extends RequestFilter<Base64StringSignerRequire>
     @Override
     public JSONObject handle(Base64StringSignerRequire data) {
         try {
-            PdfReader pdfReader = new PdfReader(data.getPdfPath());
-            PdfStamper stamper = new PdfStamper(pdfReader, new FileOutputStream(data.getResultPath()));
+            String tmpFileName = "tmp_" + StrRandomTool.getRandom(12) + ".pdf";
+            String tmpResultFile = "result_" + tmpFileName;
+            Base64FileTool.saveBase64File(data.getPdfBase64(), "./" + tmpFileName);
+            PdfReader pdfReader = new PdfReader("./" + tmpFileName);
+            PdfStamper stamper = new PdfStamper(pdfReader, new FileOutputStream(tmpResultFile));
             PdfContentByte canvas = stamper.getOverContent(data.getPage());
             BaseFont baseFont = BaseFont.createFont(AsianFontMapper.ChineseSimplifiedFont,  AsianFontMapper.ChineseSimplifiedEncoding_H, BaseFont.NOT_EMBEDDED);
             Font font = new Font(baseFont, 8);
-            ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(data.getContent(), font),
-                    data.getFirstX(), data.getFirstY(), 0);
-            stamper.close();
-            this.jobResult.put("result", "success");
+//            ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(data.getContent(), font),
+//                    data.getFirstX(), data.getFirstY(), 0);
+//            stamper.close();
+//            this.jobResult.put("result", "success");
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {
