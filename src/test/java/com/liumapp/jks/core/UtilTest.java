@@ -1,9 +1,12 @@
 package com.liumapp.jks.core;
 
 import com.alibaba.fastjson.JSONObject;
+import com.liumapp.jks.core.signature.Base64StringSigner;
 import com.liumapp.jks.core.signature.StringSigner;
+import com.liumapp.jks.core.signature.require.Base64StringSignerRequire;
 import com.liumapp.jks.core.signature.require.StringSignerRequire;
 import com.liumapp.jks.core.util.FileManager;
+import com.liumapp.qtools.file.base64.Base64FileTool;
 import junit.framework.TestCase;
 import org.junit.Assert;
 
@@ -54,9 +57,19 @@ public class UtilTest extends TestCase {
         }
     }
 
-    public void testBase64SignString () {
+    public void testBase64SignString () throws IOException {
         if (debug) {
-            
+            JksCore jksCore = new JksCore();
+            Base64StringSigner base64StringSigner = new Base64StringSigner();
+            Base64StringSignerRequire base64StringSignerRequire = new Base64StringSignerRequire();
+            base64StringSignerRequire.setContent("hello world , 你好呀你好呀")
+                    .setPdfBase64(Base64FileTool.filePathToBase64(savepath + "/test.pdf"))
+                    .setFirstX(100)
+                    .setFirstY(100)
+                    .setPage(1)
+                    .setFontSize(12);
+            JSONObject result = jksCore.doJob(base64StringSigner, base64StringSignerRequire);
+            Base64FileTool.saveBase64File(result.get("content").toString(), savepath + "/test_result_2.pdf");
         }
     }
 
