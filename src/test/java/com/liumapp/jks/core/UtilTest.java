@@ -44,8 +44,10 @@ public class UtilTest extends TestCase {
             StringSignerRequire stringSignerRequire = new StringSignerRequire();
             stringSignerRequire.setContent("你好呀世界")
                     .setPdfPath(this.savepath + "/test.pdf")
+                    .setResultPath(this.savepath + "/test_result.pdf")
                     .setFirstX(50)
-                    .setFirstY(50);
+                    .setFirstY(50)
+                    .setPage(1);
             JSONObject result = jksCore.doJob(stringSigner, stringSignerRequire);
             System.out.println(result.toJSONString());
         }
