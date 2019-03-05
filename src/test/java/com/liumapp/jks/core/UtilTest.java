@@ -42,7 +42,7 @@ public class UtilTest extends TestCase {
             JksCore jksCore = new JksCore();
             StringSigner stringSigner = new StringSigner();
             StringSignerRequire stringSignerRequire = new StringSignerRequire();
-            stringSignerRequire.setContent("你好呀世界")
+            stringSignerRequire.setContent("hello world")
                     .setPdfPath(this.savepath + "/test.pdf")
                     .setResultPath(this.savepath + "/test_result.pdf")
                     .setFirstX(50)

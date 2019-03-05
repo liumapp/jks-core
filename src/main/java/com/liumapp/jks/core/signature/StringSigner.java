@@ -3,6 +3,7 @@ package com.liumapp.jks.core.signature;
 import com.alibaba.fastjson.JSONObject;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.ColumnText;
 import com.itextpdf.text.pdf.PdfContentByte;
@@ -30,7 +31,7 @@ public class StringSigner extends RequestFilter<StringSignerRequire> {
             PdfReader pdfReader = new PdfReader(data.getPdfPath());
             PdfStamper stamper = new PdfStamper(pdfReader, new FileOutputStream(data.getResultPath()));
             PdfContentByte canvas = stamper.getOverContent(data.getPage());
-            ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(data.getContent()),
+            ColumnText.showTextAligned(canvas, Element.ALIGN_LEFT, new Phrase(data.getContent(), new Font()),
                     data.getFirstX(), data.getFirstY(), 0);
             stamper.close();
             this.jobResult.put("result", "success");
