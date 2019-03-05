@@ -13,10 +13,8 @@ import com.liumapp.jks.core.signature.require.StringSignerRequire;
  * date 2019/3/5
  */
 public class StringSigner extends RequestFilter<StringSignerRequire> {
-
     @Override
     public JSONObject handle(StringSignerRequire data) {
         return null;
     }
-
 }
