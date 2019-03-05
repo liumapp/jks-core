@@ -1,5 +1,8 @@
 package com.liumapp.jks.core;
 
+import com.alibaba.fastjson.JSONObject;
+import com.liumapp.jks.core.signature.StringSigner;
+import com.liumapp.jks.core.signature.require.StringSignerRequire;
 import com.liumapp.jks.core.util.FileManager;
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -18,7 +21,7 @@ public class UtilTest extends TestCase {
 
     private String savepath = "/usr/local/tomcat/project/jks-core/data";
 
-    private boolean debug = false;
+    private boolean debug = true;
 
     public void testCopyFile () throws IOException {
         if (debug) {
@@ -31,6 +34,20 @@ public class UtilTest extends TestCase {
             } else {
                 Assert.assertTrue(false);
             }
+        }
+    }
+
+    public void testSignString () {
+        if (debug) {
+            JksCore jksCore = new JksCore();
+            StringSigner stringSigner = new StringSigner();
+            StringSignerRequire stringSignerRequire = new StringSignerRequire();
+            stringSignerRequire.setContent("你好呀世界")
+                    .setPdfPath(this.savepath + "/test.pdf")
+                    .setFirstX(50)
+                    .setFirstY(50);
+            JSONObject result = jksCore.doJob(stringSigner, stringSignerRequire);
+            System.out.println(result.toJSONString());
         }
     }
 
