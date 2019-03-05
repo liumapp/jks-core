@@ -24,16 +24,28 @@ public class StringSignerRequire extends JobData {
 
     private int page;
 
+    private int fontSize;
+
     public StringSignerRequire() {
     }
 
-    public StringSignerRequire(String pdfPath, String resultPath, String content, float firstX, float firstY, int page) {
+    public StringSignerRequire(String pdfPath, String resultPath, String content, float firstX, float firstY, int page, int fontSize) {
         this.pdfPath = pdfPath;
         this.resultPath = resultPath;
         this.content = content;
         this.firstX = firstX;
         this.firstY = firstY;
         this.page = page;
+        this.fontSize = fontSize;
+    }
+
+    public int getFontSize() {
+        return fontSize;
+    }
+
+    public StringSignerRequire setFontSize(int fontSize) {
+        this.fontSize = fontSize;
+        return this;
     }
 
     public int getPage() {

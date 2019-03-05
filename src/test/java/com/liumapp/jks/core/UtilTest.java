@@ -42,12 +42,13 @@ public class UtilTest extends TestCase {
             JksCore jksCore = new JksCore();
             StringSigner stringSigner = new StringSigner();
             StringSignerRequire stringSignerRequire = new StringSignerRequire();
-            stringSignerRequire.setContent("hello world")
+            stringSignerRequire.setContent("hello world, 你好呀世界")
                     .setPdfPath(this.savepath + "/test.pdf")
                     .setResultPath(this.savepath + "/test_result.pdf")
                     .setFirstX(50)
                     .setFirstY(50)
-                    .setPage(1);
+                    .setPage(1)
+                    .setFontSize(12);
             JSONObject result = jksCore.doJob(stringSigner, stringSignerRequire);
             System.out.println(result.toJSONString());
         }
