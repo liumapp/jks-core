@@ -54,4 +54,10 @@ public class UtilTest extends TestCase {
         }
     }
 
+    public void testBase64SignString () {
+        if (debug) {
+            
+        }
+    }
+
 }
