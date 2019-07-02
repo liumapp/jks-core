@@ -4,7 +4,7 @@
 
   <groupId>com.liumapp.jks.core</groupId>
   <artifactId>jks-core</artifactId>
-  <version>v1.4.7</version>
+  <version>v1.5.0</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -104,22 +104,22 @@
     <dependency>
       <groupId>com.liumapp.qtools.security.encrypt</groupId>
       <artifactId>qtools-security-encrypt</artifactId>
-      <version>v1.3.4</version>
+      <version>v1.3.11</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.date</groupId>
       <artifactId>qtools-date</artifactId>
-      <version>v1.3.4</version>
+      <version>v1.3.11</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.str</groupId>
       <artifactId>qtools-str</artifactId>
-      <version>v1.3.4</version>
+      <version>v1.3.11</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.file</groupId>
       <artifactId>qtools-file</artifactId>
-      <version>v1.3.4</version>
+      <version>v1.3.11</version>
     </dependency>
   </dependencies>
 
@@ -183,6 +183,34 @@
             <phase>package</phase>
             <goals>
               <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4.1</version>
+        <configuration>
+          <!-- get all project dependencies -->
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <!-- MainClass in mainfest make a executable jar -->
+          <archive>
+            <manifest>
+              <mainClass>com.liumapp.jks.core.JksCore</mainClass>
+            </manifest>
+          </archive>
+
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <!-- bind to the packaging phase -->
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
             </goals>
           </execution>
         </executions>
