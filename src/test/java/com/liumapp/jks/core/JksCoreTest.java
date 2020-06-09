@@ -37,15 +37,11 @@ public class JksCoreTest extends TestCase {
 
     private String jksSavePath = "/usr/local/tomcat/project/jks-core/data/";
 
-    private boolean debug = true;
-
     @Override
     protected void setUp() throws Exception {
-        if (debug) {
-            File file = new File(this.jksSavePath);
-            Assert.assertEquals(true, file.isDirectory());
-            super.setUp();
-        }
+        File file = new File(this.jksSavePath);
+        Assert.assertEquals(true, file.isDirectory());
+        super.setUp();
     }
 
     /**
@@ -56,22 +52,20 @@ public class JksCoreTest extends TestCase {
      */
     @Test
     public void testGenerateContainer () {
-        if (debug) {
-            JksCore jksCore = new JksCore();
-            GenerateJksContainer generateJksContainer = new GenerateJksContainer();
-            GenerateJksContainerRequire generateJksContainerRequire = new GenerateJksContainerRequire();
-            generateJksContainerRequire.setSavePath(this.jksSavePath)
-                    .setKeyStoreName("keystore.ks")
-                    .setKeyStorePd("123456")//container password
-                    .setFcAlias("first-cert")//alias of first certificate
-                    .setFcPassword("123123")//password of first certificate
-                    .setFcName("liumapp")
-                    .setFcCountry("CN")
-                    .setFcProvince("ZJ")
-                    .setFcCity("Hangzhou");
-            JSONObject result = jksCore.doJob(generateJksContainer, generateJksContainerRequire);
-            Assert.assertEquals("success", result.get("msg"));
-        }
+        JksCore jksCore = new JksCore();
+        GenerateJksContainer generateJksContainer = new GenerateJksContainer();
+        GenerateJksContainerRequire generateJksContainerRequire = new GenerateJksContainerRequire();
+        generateJksContainerRequire.setSavePath(this.jksSavePath)
+                .setKeyStoreName("keystore.ks")
+                .setKeyStorePd("123456")//container password
+                .setFcAlias("first-cert")//alias of first certificate
+                .setFcPassword("123123")//password of first certificate
+                .setFcName("liumapp")
+                .setFcCountry("CN")
+                .setFcProvince("ZJ")
+                .setFcCity("Hangzhou");
+        JSONObject result = jksCore.doJob(generateJksContainer, generateJksContainerRequire);
+        Assert.assertEquals("success", result.get("msg"));
     }
 
     /**
@@ -79,54 +73,50 @@ public class JksCoreTest extends TestCase {
      */
     @Test
     public void testGenerateCertificate () {
-        if (debug) {
-            JksCore jksCore = new JksCore();
-            GenerateCertificate generateCertificate = new GenerateCertificate();
-            GenerateCertificateRequire generateCertificateRequire = new GenerateCertificateRequire();
-            generateCertificateRequire.setAlias("second-cert")
-                    .setCertPassword("123123")
-                    .setCountry("CN")
-                    .setProvince("ZJ")
-                    .setCity("Hangzhou")
-                    .setName("zhangsan")
-                    .setKeystorePath(this.jksSavePath)
-                    .setKeystoreName("demo.ks")
-                    .setStorepass("123456")
-                    .setValidity(1);
-            JSONObject result = jksCore.doJob(generateCertificate, generateCertificateRequire);
-            Assert.assertEquals("success", result.get("msg"));
-        }
+        JksCore jksCore = new JksCore();
+        GenerateCertificate generateCertificate = new GenerateCertificate();
+        GenerateCertificateRequire generateCertificateRequire = new GenerateCertificateRequire();
+        generateCertificateRequire.setAlias("second-cert")
+                .setCertPassword("123123")
+                .setCountry("CN")
+                .setProvince("ZJ")
+                .setCity("Hangzhou")
+                .setName("zhangsan")
+                .setKeystorePath(this.jksSavePath)
+                .setKeystoreName("demo.ks")
+                .setStorepass("123456")
+                .setValidity(1);
+        JSONObject result = jksCore.doJob(generateCertificate, generateCertificateRequire);
+        Assert.assertEquals("success", result.get("msg"));
     }
 
     /**
      * 获取正式证书，并存入证书容器中
      * 正式证书只有一天的有效期，意味着申请后必须在一天之内完成签署，否则您需要重新申请新的证书
      * 正式证书的申请将会产生扣费操作，并且一经申请，您需要确保对其本人真实性的有效操作
-     * 如额外购买了实名认证接口，请联系技术liumapp负责对接
      */
     @Test
     public void testRequireCACertificate () {
-        if (debug) {
-            JksCore jksCore = new JksCore();
-            RequireCACertificate requireCACertificate = new RequireCACertificate();
-            CACertificateRequire caCertificateRequire = new CACertificateRequire();
-            caCertificateRequire.setAppId("your app id here")
-                    .setAppSecret("your app secret here")
-                    .setHost("http://sdk.fangxinqian.cn:3030")
-                    .setPath("/cert/generate")
-                    .setName("刘美胜奇")
-                    .setIdentityCode("430381199402141013")
-                    .setEmail("308062799@qq.com")
-                    .setOrganization("浙江葫芦娃网络集团有限公司")
-                    .setOrganizationUnit("研发部")
-                    .setCertAlias("alias-liumapp")
-                    .setCertPassword("123456")
-                    .setKeystoreName("keystore.ks")
-                    .setStorepass("123456")
-                    .setKeystorePath(this.jksSavePath);
-            JSONObject result = jksCore.doJob(requireCACertificate, caCertificateRequire);
-            Assert.assertEquals("success", result.get("msg"));
-        }
+        JksCore jksCore = new JksCore();
+        RequireCACertificate requireCACertificate = new RequireCACertificate();
+        CACertificateRequire caCertificateRequire = new CACertificateRequire();
+        caCertificateRequire.setAppId("your app id here")
+                .setAppSecret("your app secret here")
+                .setHost("ca host")
+                .setPath("ca require cert path")
+                .setName("cert require name")
+                .setIdentityCode("cert require identity code")
+                .setEmail("email")
+                .setOrganization("your company name")
+                .setOrganizationUnit("your company unit")
+                .setCertAlias("cert alias")
+                .setCertPassword("cert password")
+                .setKeystoreName("keystore.ks")
+                .setStorepass("123456")
+                .setKeystorePath(this.jksSavePath);
+        JSONObject result = jksCore.doJob(requireCACertificate, caCertificateRequire);
+        Assert.assertEquals("success", result.get("msg"));
+
     }
 
     /**
@@ -134,37 +124,34 @@ public class JksCoreTest extends TestCase {
      */
     @Test
     public void testExportCertificate () {
-        if (debug) {
-            JksCore jksCore = new JksCore();
-            ExportCertificate exportCertificate = new ExportCertificate();
-            ExportCertificateRequire exportCertificateRequire = new ExportCertificateRequire();
-            exportCertificateRequire.setAlias("alias-liumapp")
-                    .setCertSavePath(this.jksSavePath)
-                    .setCertName("liumeishengqi2.cer")
-                    .setKeystorePath(this.jksSavePath)
-                    .setKeystoreName("keystore.ks")
-                    .setKeystorePasswd("123456");
-            JSONObject result = jksCore.doJob(exportCertificate, exportCertificateRequire);
-            Assert.assertEquals("success", result.get("msg"));
-        }
+        JksCore jksCore = new JksCore();
+        ExportCertificate exportCertificate = new ExportCertificate();
+        ExportCertificateRequire exportCertificateRequire = new ExportCertificateRequire();
+        exportCertificateRequire.setAlias("alias-liumapp")
+                .setCertSavePath(this.jksSavePath)
+                .setCertName("cert-name.cer")
+                .setKeystorePath(this.jksSavePath)
+                .setKeystoreName("keystore.ks")
+                .setKeystorePasswd("123456");
+        JSONObject result = jksCore.doJob(exportCertificate, exportCertificateRequire);
+        Assert.assertEquals("success", result.get("msg"));
     }
 
     @Test
     public void testInstallPfx () {
-        if (debug) {
-            JksCore jksCore = new JksCore();
-            InstallPfxFileToJks installPfxFileToJks = new InstallPfxFileToJks();
-            InstallPfxFileToJksRequire installPfxFileToJksRequire = new InstallPfxFileToJksRequire();
-            installPfxFileToJksRequire.setAlias("zj")
-                    .setKeystoreName("demo.ks")
-                    .setKeystorePath(this.jksSavePath)
-                    .setKeystorePasswd("123456")
-                    .setPfxFileName("zj-123456.pfx")
-                    .setPfxFilePath(this.jksSavePath)
-                    .setPfxPasswd("123456");
-            JSONObject result = jksCore.doJob(installPfxFileToJks, installPfxFileToJksRequire);
-            Assert.assertEquals("success", result.get("msg"));
-        }
+        JksCore jksCore = new JksCore();
+        InstallPfxFileToJks installPfxFileToJks = new InstallPfxFileToJks();
+        InstallPfxFileToJksRequire installPfxFileToJksRequire = new InstallPfxFileToJksRequire();
+        installPfxFileToJksRequire.setAlias("zj")
+                .setKeystoreName("demo.ks")
+                .setKeystorePath(this.jksSavePath)
+                .setKeystorePasswd("123456")
+                .setPfxFileName("zj-123456.pfx")
+                .setPfxFilePath(this.jksSavePath)
+                .setPfxPasswd("123456");
+        JSONObject result = jksCore.doJob(installPfxFileToJks, installPfxFileToJksRequire);
+        Assert.assertEquals("success", result.get("msg"));
+
     }
 
     /**
@@ -172,36 +159,34 @@ public class JksCoreTest extends TestCase {
      */
     @Test
     public void testSignFirstCertificateToPdf () {
-        if (debug) {
-            JksCore jksCore = new JksCore();
-            SignPdf signPdf = new SignPdf();
-            SignPdfRequire signPdfRequire = new SignPdfRequire();
-            signPdfRequire.setKsPath(this.jksSavePath)
-                    .setKsName("demo.ks")
-                    .setKsPassword("123456".toCharArray())
-                    .setCertAlias("alias-liumapp")
-                    .setCertPassword("123123123".toCharArray())
-                    .setPdfSavePath(this.jksSavePath)
-                    .setPdfFileName("test.pdf")
-                    .setResultSavePath(this.jksSavePath)
-                    .setResultSaveName("test_with_signed222.pdf")
-                    .setReason("this is reason")
-                    .setLocation("this is location")
-                    .setFirstX(50)
-                    .setFirstY(50)
-                    .setSecondX(100)
-                    .setSecondY(100)
-                    .setPageNum(2)
-                    .setSignFieldName("firstSignatureArea")
-                    .setSignPicPath(this.jksSavePath + "/" + "girl.jpg");
-            JSONObject result = jksCore.doJob(signPdf, signPdfRequire);
-            Assert.assertEquals("success", result.get("msg"));
-        }
+        JksCore jksCore = new JksCore();
+        SignPdf signPdf = new SignPdf();
+        SignPdfRequire signPdfRequire = new SignPdfRequire();
+        signPdfRequire.setKsPath(this.jksSavePath)
+                .setKsName("demo.ks")
+                .setKsPassword("123456".toCharArray())
+                .setCertAlias("alias-liumapp")
+                .setCertPassword("123123123".toCharArray())
+                .setPdfSavePath(this.jksSavePath)
+                .setPdfFileName("test.pdf")
+                .setResultSavePath(this.jksSavePath)
+                .setResultSaveName("test_with_signed222.pdf")
+                .setReason("this is reason")
+                .setLocation("this is location")
+                .setFirstX(50)
+                .setFirstY(50)
+                .setSecondX(100)
+                .setSecondY(100)
+                .setPageNum(2)
+                .setSignFieldName("firstSignatureArea")
+                .setSignPicPath(this.jksSavePath + "/" + "girl.jpg");
+        JSONObject result = jksCore.doJob(signPdf, signPdfRequire);
+        Assert.assertEquals("success", result.get("msg"));
+
     }
 
     @Test
     public void testSignFirstCertificateWithTimeStampToPdf () {
-        if (debug) {
             JksCore jksCore = new JksCore();
             SignPdfWithTimeStamp signPdfWithTimeStamp = new SignPdfWithTimeStamp();
             SignPdfWithTimeStampRequire signPdfWithTimeStampRequire = new SignPdfWithTimeStampRequire();
@@ -214,8 +199,8 @@ public class JksCoreTest extends TestCase {
                     .setPdfFileName("test.pdf")
                     .setResultSavePath(this.jksSavePath)
                     .setResultSaveName("test_with_signed2019.pdf")
-                    .setReason("验证签署功能")
-                    .setLocation("杭州余杭")
+                    .setReason("sign reason")
+                    .setLocation("sign location")
                     .setFirstX(50)
                     .setFirstY(50)
                     .setSecondX(100)
@@ -225,12 +210,12 @@ public class JksCoreTest extends TestCase {
                     .setSignPicPath(this.jksSavePath + "/" + "girl.jpg")
                     .setAppId("your app id here")
                     .setAppSecret("your app secret here")
-                    .setTimeStampServer("http://sdk.fangxinqian.cn:3030/timestamp/require");
+                    .setTimeStampServer("your time stamp server url");
             System.out.println("begin sign at :" + ZonedDateTime.now());
             JSONObject result = jksCore.doJob(signPdfWithTimeStamp, signPdfWithTimeStampRequire);
             System.out.println("end sign at : " + ZonedDateTime.now());
             Assert.assertEquals("success", result.get("msg"));
-        }
+
     }
 
     /**
@@ -238,31 +223,30 @@ public class JksCoreTest extends TestCase {
      */
     @Test
     public void testSignSecondCertificateToPdf () {
-        if (debug) {
-            JksCore jksCore = new JksCore();
-            SignPdf signPdf = new SignPdf();
-            SignPdfRequire signPdfRequire = new SignPdfRequire();
-            signPdfRequire.setKsPath(this.jksSavePath)
-                    .setKsName("demo.ks")
-                    .setKsPassword("123456".toCharArray())
-                    .setCertAlias("second-cert")
-                    .setCertPassword("123123".toCharArray())
-                    .setPdfSavePath(this.jksSavePath)
-                    .setPdfFileName("test_with_signed.pdf")
-                    .setResultSavePath(this.jksSavePath)
-                    .setResultSaveName("test_with_signed_2.pdf")
-                    .setReason("this is reason")
-                    .setLocation("this is location")
-                    .setFirstX(300)
-                    .setFirstY(300)
-                    .setSecondX(350)
-                    .setSecondY(350)
-                    .setPageNum(1)
-                    .setSignFieldName("secondSignatureArea")
-                    .setSignPicPath(this.jksSavePath + "/" + "girl.jpg");
-            JSONObject result = jksCore.doJob(signPdf, signPdfRequire);
-            Assert.assertEquals("success", result.get("msg"));
-        }
+        JksCore jksCore = new JksCore();
+        SignPdf signPdf = new SignPdf();
+        SignPdfRequire signPdfRequire = new SignPdfRequire();
+        signPdfRequire.setKsPath(this.jksSavePath)
+                .setKsName("demo.ks")
+                .setKsPassword("123456".toCharArray())
+                .setCertAlias("second-cert")
+                .setCertPassword("123123".toCharArray())
+                .setPdfSavePath(this.jksSavePath)
+                .setPdfFileName("test_with_signed.pdf")
+                .setResultSavePath(this.jksSavePath)
+                .setResultSaveName("test_with_signed_2.pdf")
+                .setReason("this is reason")
+                .setLocation("this is location")
+                .setFirstX(300)
+                .setFirstY(300)
+                .setSecondX(350)
+                .setSecondY(350)
+                .setPageNum(1)
+                .setSignFieldName("secondSignatureArea")
+                .setSignPicPath(this.jksSavePath + "/" + "girl.jpg");
+        JSONObject result = jksCore.doJob(signPdf, signPdfRequire);
+        Assert.assertEquals("success", result.get("msg"));
+
     }
 
 }
