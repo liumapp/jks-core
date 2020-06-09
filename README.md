@@ -1,6 +1,29 @@
 # jks-core
 Abstract encapsulation of JKS
 
+# Maven/Gradle Dependency
+ 1. Add jks-core as a dependency using either Maven or Gradle:
+
+Maven:
+
+```xml
+<dependency>
+  <groupId>com.liumapp.jks.core</groupId>
+  <artifactId>jks-core</artifactId>
+  <version>v1.5.0</version>
+</dependency>
+```
+
+Gradle:
+
+```groovy
+implementation 'com.liumapp.jks.core:jks-core:v1.5.0'
+```
+
+# how to use jks-core
+
+just follow the example below:
+
 ````java
 
     private String jksSavePath = "/usr/local/tomcat/project/jks-core/data/";
